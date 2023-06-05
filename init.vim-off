@@ -1,0 +1,213 @@
+set mouse=a  " enable 
+set encoding=utf-8
+set number
+set rnu
+set noswapfile
+set scrolloff=1
+
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set expandtab
+set autoindent
+set fileformat=unix
+set ignorecase
+set smartcase
+set foldcolumn=3
+
+filetype indent on      " load filetype-specific indent files
+
+
+
+
+let g:python3_host_prog = $HOME . '/.local/venv/nvim/bin/python'
+
+call plug#begin('~/.vim/plugged')
+
+    Plug 'lambdalisue/vim-django-support'
+    Plug 'lyokha/vim-xkbswitch'
+    Plug 'APZelos/blamer.nvim'
+    Plug 'mattn/emmet-vim'
+    Plug 'psf/black', { 'branch': 'stable' }
+    Plug 'posva/vim-vue'
+    Plug 'yuezk/vim-js'
+    Plug 'prettier/vim-prettier', {
+      \ 'do': 'yarn install --frozen-lockfile --production',
+      \ 'branch': 'release/0.x'
+      \ }
+    Plug 'nvim-lua/plenary.nvim'
+    Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
+    Plug 'kyazdani42/nvim-web-devicons'
+    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+    Plug 'tomtom/tcomment_vim'
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    Plug 'yaegassy/coc-blade', {'do': 'yarn install --frozen-lockfile'}
+    Plug 'sheerun/vim-polyglot'
+    Plug 'MunifTanjim/nui.nvim'
+    " Plug 'loctvl842/monokai-pro.nvim'
+    Plug 'folke/tokyonight.nvim'
+    Plug 'projekt0n/github-nvim-theme'
+    Plug 'stevearc/aerial.nvim'
+    Plug 'echasnovski/mini.nvim', { 'branch': 'stable' }
+    Plug 'ludovicchabant/vim-gutentags'
+    Plug 'stevearc/oil.nvim'
+    Plug 'goolord/alpha-nvim'
+    Plug 'levouh/tint.nvim'
+call plug#end()
+
+if (has('termguicolors'))
+  set termguicolors
+endif
+
+
+inoremap jk <esc>
+inoremap jj <esc>
+inoremap kk <esc>
+inoremap <expr> <cr> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
+
+" Switch to English on <ESC>
+let g:XkbSwitchEnabled = 1
+let g:XkbSwitchLib = '/usr/local/lib/libInputSourceSwitcher.dylib'
+
+" Turn off search highlight
+nnoremap ,<space> :nohlsearch<CR>
+" nnoremap <CR> ciw
+
+
+let g:django_support#auto_activate_on_filetype
+lua << EOF
+require("oil").setup(
+{
+      view_options = {
+        -- Show files and directories that start with "."
+        show_hidden = false,
+      }
+}
+)
+vim.keymap.set("n", "-", require("oil").open, { desc = "Open parent directory" })
+
+-- require("monokai-pro").setup({
+--   transparent_background = false,
+--   terminal_colors = true,
+--   devicons = true, -- highlight the icons of `nvim-web-devicons`
+--   italic_comments = false,
+--   filter = "ristretto", -- classic | octagon | pro | machine | ristretto | spectrum
+--   inc_search = "background", -- underline | background
+--   background_clear = {
+--     "telescope",
+--   },
+--   plugins = {
+--     bufferline = {
+--       underline_selected = false,
+--       underline_visible = false,
+--     },
+--     indent_blankline = {
+--       context_highlight = "pro", -- default | pro
+--       context_start_underline = false,
+--     },
+--   },
+--   ---@param c Colorscheme
+--   override = function(c) end,
+-- })
+-- vim.cmd([[colorscheme monokai-pro]])
+require('mini.surround').setup()
+EOF
+
+colorscheme tokyonight-night
+" colorscheme tokyonight-day
+" colorscheme tokyonight-moon
+" colorscheme tokyonight-storm
+
+" colorscheme github_dimmed
+
+
+lua << EOF
+require("tint").setup()
+require('aerial').setup({})
+-- Set a keymap to toggle aerial
+vim.keymap.set('n', '<leader>a', '<cmd>AerialToggle!<CR>')
+
+-- Start page
+local startify = require'alpha.themes.startify'
+startify.section.header.val = {
+[[  .d8888b.                             d8b      888                                                   888                      888    ]], 
+[[ d88P  Y88b                            Y8P      888                                                   888                      888    ]], 
+[[ 888    888                                     888                                                   888                      888    ]], 
+[[ 888         .d88b.  88888b.  .d8888b  888  .d88888  .d88b.  888d888        .d8888b  .d88b.  88888b.  888888  .d88b.  888  888 888888 ]], 
+[[ 888        d88""88b 888 "88b 88K      888 d88" 888 d8P  Y8b 888P"         d88P"    d88""88b 888 "88b 888    d8P  Y8b `Y8bd8P' 888    ]], 
+[[ 888    888 888  888 888  888 "Y8888b. 888 888  888 88888888 888           888      888  888 888  888 888    88888888   X88K   888    ]], 
+[[ Y88b  d88P Y88..88P 888  888      X88 888 Y88b 888 Y8b.     888           Y88b.    Y88..88P 888  888 Y88b.  Y8b.     .d8""8b. Y88b.  ]], 
+[[  "Y8888P"   "Y88P"  888  888  88888P' 888  "Y88888  "Y8888  888            "Y8888P  "Y88P"  888  888  "Y888  "Y8888  888  888  "Y888 ]],
+[[  ]],
+-- Add message of the day here
+}
+-- local footer = {
+--     type = "text",
+--     val = require'alpha.fortune'(),
+--     opts = {
+--         position = "center",
+--         hl = "Number",
+--     },
+-- }
+-- startify.section.footer.val = footer
+require'alpha'.setup(startify.opts)
+require'alpha'.setup(startify.config)
+EOF
+
+let g:blamer_enabled = 1
+
+set colorcolumn=79
+set fillchars+=vert:\ 
+highlight NonText ctermfg=6
+highlight LineNr ctermfg=59
+highlight MatchTag ctermbg=darkred ctermfg=black
+hi LineNr guibg=bg
+set foldcolumn=2
+hi foldcolumn guibg=bg
+hi VertSplit guibg=fg guifg=bg
+hi CursorLine guibg=grey15 
+set cursorline 
+set termguicolors
+
+if exists('+termguicolors')
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
+endif
+" call BLACK to reformat current file "
+autocmd FileType python map <buffer> ,m :exec '!black -S -l 80' shellescape(@%, 1)<CR>
+
+autocmd BufReadPost,BufNewFile *.vue setlocal filetype=vue
+autocmd FileType vue setlocal expandtab
+autocmd FileType vue setlocal tabstop=2
+autocmd FileType vue setlocal softtabstop=2
+autocmd FileType vue setlocal shiftwidth=2
+
+
+
+
+
+" Telescope "
+nmap ,ff :Telescope find_files<CR>
+nmap ,fg :Telescope live_grep<CR>
+nmap ,fb :Telescope buffers<CR>
+
+" Cicle buffers by space + arrow"
+nmap <Space><Up> :bp<CR>
+nmap <Space><Down> :bn<CR>
+nmap <Space><Right> :tabn<CR>
+nmap <Space><Left> :tabp<CR>
+
+" Cicle buffers by space + nav keys"
+nmap <Space>k :bp<CR>
+nmap <Space>j :bn<CR>
+nmap <Space>l :tabn<CR>
+nmap <Space>h :tabp<CR>
+
+" iterm2 specific "
+set t_Co=256
+
+" My abbreviations "
+ab clls console.log('')<ESC>F';a
+ab lgi logging.info(f'')<ESC>F';a
+
