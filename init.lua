@@ -41,13 +41,13 @@ vim.keymap.set('i', 'kk', '<esc>')
 -- Remove search highlights
 vim.keymap.set('n', ',<space>', ':nohlsearch<CR>')
 
--- Cicle buffers by space + arrow
+-- Cycle buffers by space + arrow
 vim.keymap.set('n', '<Space><Up>', ':bp<CR>')
 vim.keymap.set('n', '<Space><Down>', ':bn<CR>')
 vim.keymap.set('n', '<Space><Right>', ':tabn<CR>')
 vim.keymap.set('n', '<Space><Left>', ':tabp<CR>')
 
--- Cicle buffers by space + nav keys
+-- Cycle buffers by space + nav keys
 vim.keymap.set('n', '<Space>k', ':bp<CR>')
 vim.keymap.set('n', '<Space>j', ':bn<CR>')
 vim.keymap.set('n', '<Space>l', ':tabn<CR>')
