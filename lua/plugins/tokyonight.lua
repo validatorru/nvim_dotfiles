@@ -44,5 +44,6 @@ return {
         end
       })
     vim.cmd[[colorscheme tokyonight]]
+    -- vim.cmd[[highlight EndOfBuffer guifg=#000000 guibg=#000000]]
   end,
 }

@@ -1,6 +1,8 @@
 {
   "aerial.nvim": { "branch": "master", "commit": "aff1bb8fecff83d3e3a2d544c4d4e6d65718bd19" },
   "alpha-nvim": { "branch": "main", "commit": "1838ae926e8d49fe5330d1498ee8289ae2c340bc" },
+  "edgy.nvim": { "branch": "main", "commit": "cb82974725e7730c847a5764f51da4b84361b502" },
+  "emmet-vim": { "branch": "master", "commit": "def5d57a1ae5afb1b96ebe83c4652d1c03640f4d" },
   "git-blame.nvim": { "branch": "master", "commit": "a1a41cf25e985b7bf0b2e6b41b3cd4d1012a63c6" },
   "lazy.nvim": { "branch": "main", "commit": "f145e6f42a56306c5536e9efbfe41f7efbec285d" },
   "lualine.nvim": { "branch": "master", "commit": "05d78e9fd0cdfb4545974a5aa14b1be95a86e9c9" },

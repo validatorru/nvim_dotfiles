@@ -75,5 +75,6 @@ vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
   command = "setlocal shiftwidth=2",
 })
 
+
 -- Start lazy nvim 
 require("lazy").setup("plugins")
