@@ -15,10 +15,13 @@
   "nvim-web-devicons": { "branch": "master", "commit": "2a125024a137677930efcfdf720f205504c97268" },
   "oil.nvim": { "branch": "master", "commit": "f322209a4a2b4685adeda5df00b29cdfd64db08e" },
   "plenary.nvim": { "branch": "master", "commit": "499e0743cf5e8075cd32af68baa3946a1c76adf1" },
-  "shade.nvim": { "branch": "master", "commit": "4286b5abc47d62d0c9ffb22a4f388b7bf2ac2461" },
+  "smart-splits.nvim": { "branch": "master", "commit": "e9a8f08b9db566ebc2b942b4776567f981b2986c" },
   "tcomment_vim": { "branch": "master", "commit": "b4930f9da28647e5417d462c341013f88184be7e" },
   "telescope.nvim": { "branch": "master", "commit": "c1a2af0af69e80e14e6b226d3957a064cd080805" },
+  "tint.nvim": { "branch": "master", "commit": "80b15a91087991068d5834419437f652d1d4bc8e" },
   "toggleterm.nvim": { "branch": "main", "commit": "95204ece0f2a54c89c4395295432f9aeedca7b5f" },
+  "vim-dadbod": { "branch": "master", "commit": "7d80bbd11c407a09e0f7b869c38f3dec3902805f" },
+  "vim-dadbod-ui": { "branch": "master", "commit": "36a67e67926345c0b11b32c378c057c7f9d9110d" },
   "vscode-js-debug": { "branch": "main", "commit": "5f238bdf4d48e3db45e0cb4d4e0f9e6e4ab9240e" },
   "xkbswitch.nvim": { "branch": "master", "commit": "9b9fced62512699261da8480c593ba0f4c14322c" }
 }
