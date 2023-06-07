@@ -18,7 +18,7 @@ return {
         require("toggleterm").setup({
             direction = 'float',
             shade_terminals = true,
-            shading_factor = '80',
+            shading_factor = '20',
             hide_numbers = true,
             float_opts = {
                 border = 'curved',
