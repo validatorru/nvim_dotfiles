@@ -9,12 +9,12 @@ return {
             options = {
                 style_preset = bufferline.style_preset.minimal, -- or bufferline.style_preset.minimal,
                 mode = "tabs", -- set to "tabs" to only show tabpages instead
-                separator_style = 'thick',
+                separator_style = 'thin',
                 themable = true, -- allows highlight groups to be overriden i.e. sets highlights as default
-                -- indicator = {
+                indicator = {
                 --     icon = '▎', -- this should be omitted if indicator style is not 'icon'
-                --     style = 'underline', -- | 'underline' | 'none',
-                -- },
+                    style = 'underline', -- | 'underline' | 'none',
+                },
             }
         }
     end,

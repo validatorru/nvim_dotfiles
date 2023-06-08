@@ -7,21 +7,21 @@ return {
         vim.keymap.set('n', ',fg', builtin.live_grep, {})
         vim.keymap.set('n', ',fb', builtin.buffers, {})
 
-        local config = require("monokai-pro.config").options
-        local colors = require("monokai-pro.colorscheme").setup(config.filter)
-        local TelescopeColor = {
-            TelescopePromptNormal = { bg = colors.base.dark },
-            TelescopeResultsNormal = { bg = colors.base.dark },
-            TelescopePreviewNormal = { bg = colors.base.dark },
-            TelescopePromptBorder = { bg = colors.base.dark, fg = colors.base.dark },
-            TelescopeResultsBorder = { bg = colors.base.dark, fg = colors.base.dark },
-            TelescopePreviewBorder = { bg = colors.base.dark, fg = colors.base.dark },
-            TelescopePromptTitle = { bg = colors.base.dark, fg = colors.base.white },
-        }
+        -- local config = require("monokai-pro.config").options
+        -- local colors = require("monokai-pro.colorscheme").setup(config.filter)
+        -- local TelescopeColor = {
+        --     TelescopePromptNormal = { bg = colors.base.dark },
+        --     TelescopeResultsNormal = { bg = colors.base.dark },
+        --     TelescopePreviewNormal = { bg = colors.base.dark },
+        --     TelescopePromptBorder = { bg = colors.base.dark, fg = colors.base.dark },
+        --     TelescopeResultsBorder = { bg = colors.base.dark, fg = colors.base.dark },
+        --     TelescopePreviewBorder = { bg = colors.base.dark, fg = colors.base.dark },
+        --     TelescopePromptTitle = { bg = colors.base.dark, fg = colors.base.white },
+        -- }
 
-        for hl, col in pairs(TelescopeColor) do
-            vim.api.nvim_set_hl(0, hl, col)
-        end
+        -- for hl, col in pairs(TelescopeColor) do
+        --     vim.api.nvim_set_hl(0, hl, col)
+        -- end
 
     end,
     dependencies = { 'nvim-lua/plenary.nvim' }

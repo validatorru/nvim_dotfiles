@@ -21,7 +21,7 @@ return {
             shading_factor = '20',
             hide_numbers = true,
             float_opts = {
-                border = 'curved',
+                border = 'none',
             }
         })
         vim.keymap.set(
