@@ -78,3 +78,12 @@ vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
 
 -- Start lazy nvim 
 require("lazy").setup("plugins")
+
+
+-- we can use 'ca' to expand an abbr in command mode
+
+-- or we could use 'ia' to expand an abbr in insert mode
+vim.keymap.set('ia', 'clls', "console.log('')<ESC>F';a")
+vim.keymap.set('ia', 'lgi', "logging.info(f'')<ESC>F';a")
+vim.keymap.set('ia', 'hml', "hm_log(f'')<ESC>F';a")
+vim.keymap.set('ia', 'importhm', "from helpers.logging_helper import hm_log<ESC>")
