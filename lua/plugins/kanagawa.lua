@@ -17,11 +17,11 @@ return {
                 palette = {},
                 theme = { wave = {}, lotus = {}, dragon = {}, all = {} },
             },
-            theme = "dragon",              -- Load "wave" theme when 'background' option is not set
-            -- background = {               -- map the value of 'background' option to a theme
-            --     dark = "dragon",           -- try "dragon" !
-            --     light = "lotus"
-            -- },
+            theme = "wave",              -- Load "wave" theme when 'background' option is not set
+            background = {               -- map the value of 'background' option to a theme
+                dark = "dragon",           -- try "dragon" !
+                light = "lotus"
+            },
             overrides = function(colors)
                 local theme = colors.theme
                 return {
