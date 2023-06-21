@@ -3,6 +3,15 @@ return {
     'rebelot/kanagawa.nvim',
     config = function()
         require('kanagawa').setup({
+            vim.api.nvim_create_autocmd("ColorScheme", {
+                desc = "Set custom highlight groups",
+                callback = function()
+                    if vim.g.colors_name == "gruvbox" then
+                        -- set your colors here...
+                        vim.api.nvim_set_hl(0, "Normal", { fg = "#FFFFFF", bg = "#000000" })
+                    end
+                end,
+            }),
             compile = false,             -- enable compiling the colorscheme
             undercurl = true,            -- enable undercurls
             commentStyle = { italic = true },
@@ -24,6 +33,10 @@ return {
             },
             overrides = function(colors)
                 local theme = colors.theme
+                 Visual = {
+                  bg = theme.ui.sakuraPink,
+                  fg = theme.ui.bg,
+                }
                 return {
                     TelescopeTitle = { fg = theme.ui.special, bold = true },
                     TelescopePromptNormal = { bg = theme.ui.bg_p1 },
@@ -46,6 +59,7 @@ return {
                     -- so that you can use it where your still want darker windows.
                     -- E.g.: autocmd TermOpen * setlocal winhighlight=Normal:NormalDark
                     NormalDark = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m3 },
+                    -- Normal = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m3 },
 
                     -- Popular plugins that open floats will link to NormalFloat by default;
                     -- set their background accordingly if you wish to keep them dark and borderless

@@ -7,15 +7,12 @@ return {
         local bufferline = require('bufferline')
         bufferline.setup{
             options = {
-                style_preset = bufferline.style_preset.minimal, -- or bufferline.style_preset.minimal,
+                -- style_preset = bufferline.style_preset.minimal, -- or bufferline.style_preset.minimal,
                 mode = "tabs", -- set to "tabs" to only show tabpages instead
-                separator_style = 'thin',
+                -- separator_style = 'slant',
                 themable = true, -- allows highlight groups to be overriden i.e. sets highlights as default
-                indicator = {
-                --     icon = '▎', -- this should be omitted if indicator style is not 'icon'
-                    style = 'underline', -- | 'underline' | 'none',
-                },
-            }
+            },
         }
+        -- vim.cmd("highlight Normal guibg=#000000 guifg=#000000")
     end,
 }
