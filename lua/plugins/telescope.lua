@@ -1,36 +1,37 @@
 return {
     'nvim-telescope/telescope.nvim', tag = '0.1.1',
     config = function()
-        require('telescope').setup({})
+        require('telescope').setup({
+            extensions = {
+                media_files = {
+                    -- filetypes whitelist
+                    -- defaults to {"png", "jpg", "mp4", "webm", "pdf"}
+                    filetypes = {"png", "webp", "jpg", "jpeg"},
+                    -- find command (defaults to `fd`)
+                    find_cmd = "rg"
+                }
+            },
+        })
         local builtin = require('telescope.builtin')
+        require('telescope').load_extension('media_files')
+        require('telescope').load_extension('http')
+        require('telescope').load_extension('coc')
         vim.keymap.set('n', ',ff', builtin.find_files, {})
         vim.keymap.set('n', ',fg', builtin.live_grep, {})
         vim.keymap.set('n', ',fb', builtin.buffers, {})
 
-        -- local config = require("monokai-pro.config").options
-        -- local colors = require("monokai-pro.colorscheme").setup(config.filter)
-        -- local TelescopeColor = {
-        --     TelescopePromptNormal = { bg = colors.base.dark },
-        --     TelescopeResultsNormal = { bg = colors.base.dark },
-        --     TelescopePreviewNormal = { bg = colors.base.dark },
-        --     TelescopePromptBorder = { bg = colors.base.dark, fg = colors.base.dark },
-        --     TelescopeResultsBorder = { bg = colors.base.dark, fg = colors.base.dark },
-        --     TelescopePreviewBorder = { bg = colors.base.dark, fg = colors.base.dark },
-        --     TelescopePromptTitle = { bg = colors.base.dark, fg = colors.base.white },
-        -- }
-
-        -- for hl, col in pairs(TelescopeColor) do
-        --     vim.api.nvim_set_hl(0, hl, col)
-        -- end
-
     end,
     dependencies = {
         {'nvim-lua/plenary.nvim'},
+        {'nvim-lua/popup.nvim'},
+        {'fannheyward/telescope-coc.nvim'},
+        {'barrett-ruth/telescope-http.nvim'},
+        {'nvim-telescope/telescope-media-files.nvim'},
         {"nvim-telescope/telescope-fzf-native.nvim",
-        build = "make",
-        config = function()
-            require("telescope").load_extension("fzf")
-        end,
+            build = "make",
+            config = function()
+                require("telescope").load_extension("fzf")
+            end,
         }
     },
 }
