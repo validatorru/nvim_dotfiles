@@ -17,7 +17,8 @@ return {
         require('telescope').load_extension('http')
         require('telescope').load_extension('coc')
         require('telescope').load_extension('tmux')
-        require('telescope').load_extension('tele_tabby')
+        require('telescope').load_extension('telescope-tabs')
+        require('telescope').load_extension('env')
         -- Open find files 
         vim.keymap.set('n', ',ff', builtin.find_files, {})
         -- Open text search
@@ -25,7 +26,7 @@ return {
         --  Open buffers list
         vim.keymap.set('n', ',fb', builtin.buffers, {})
         -- Open tabs list
-        vim.keymap.set('n', ',ft', ':Telescope tele_tabby list <CR>', {})
+        vim.keymap.set('n', ',ft', ':Telescope telescope-tabs list_tabs <CR>', {})
         -- Open media files
         vim.keymap.set('n', ',fm', ':Telescope media_files <CR>', {})
         -- Open media files
@@ -35,8 +36,9 @@ return {
     dependencies = {
         {'nvim-lua/plenary.nvim'},
         {'nvim-lua/popup.nvim'},
+        {'LinArcX/telescope-env.nvim'},
         {'camgraff/telescope-tmux.nvim'},
-        {'TC72/telescope-tele-tabby.nvim'},
+        {'LukasPietzschmann/telescope-tabs'},
         {'fannheyward/telescope-coc.nvim'},
         {'barrett-ruth/telescope-http.nvim'},
         {'nvim-telescope/telescope-media-files.nvim'},
