@@ -77,6 +77,7 @@ vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
 
 
 vim.g.mapleader = "<Space>"
+vim.g.maplocalleader = "<Space>"
 
 -- Start lazy nvim 
 require("lazy").setup("plugins")
