@@ -17,8 +17,10 @@ return {
                             home = "~/Documents/Personal/writings/notes/personal",
                         }
                     }
-                }
+                },
+                ["core.keybinds"] = {},
             }
         }
+        vim.keymap.set('n', ',ft', ':Telescope telescope-tabs list_tabs <CR>', {})
     end,
 }
