@@ -2,6 +2,11 @@ return {
     'nvim-telescope/telescope.nvim', tag = '0.1.1',
     config = function()
         require('telescope').setup({
+            defaults = {
+                file_ignore_patterns = {
+                    "node_modules", "public", "vendor", "*.min.*"
+                }
+            },
             extensions = {
                 media_files = {
                     -- filetypes whitelist
