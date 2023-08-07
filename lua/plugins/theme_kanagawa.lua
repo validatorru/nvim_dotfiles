@@ -51,9 +51,11 @@ return {
                     PmenuSbar = { bg = theme.ui.bg_m1 },
                     PmenuThumb = { bg = theme.ui.bg_p2 },
 
-                    NormalFloat = { bg = "none" },
-                    FloatBorder = { bg = "none" },
-                    FloatTitle = { bg = "none" },
+                    NormalFloat = { bg = theme.ui.bg_p2 },
+                    NormalBorder = { bg = theme.ui.shade0 },
+                    FloatBorder = { bg = theme.ui.bg_m1 },
+                    HoverBorder = { bg = theme.ui.shade0 },
+                    HoverNormal = { bg = theme.ui.shade0 },
 
                     -- Save an hlgroup with dark background and dimmed foreground
                     -- so that you can use it where your still want darker windows.

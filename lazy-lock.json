@@ -10,6 +10,7 @@
   "git.nvim": { "branch": "main", "commit": "7a342e61f28e321ef08e00fca4be74ff3ef88335" },
   "kanagawa.nvim": { "branch": "master", "commit": "1749cea392acb7d1548a946fcee1e6f1304cd3cb" },
   "lazy.nvim": { "branch": "main", "commit": "ed15f6b39422f46412212005f6d12c6f353b0293" },
+  "lspsaga.nvim": { "branch": "main", "commit": "2fea9e5828133692d189b159987d2dbcfa9d98f2" },
   "lualine.nvim": { "branch": "master", "commit": "05d78e9fd0cdfb4545974a5aa14b1be95a86e9c9" },
   "neorg": { "branch": "main", "commit": "774f5dd80d15aa11d0221aba767da699f9533e32" },
   "nvim-tmux-navigation": { "branch": "main", "commit": "543f090a45cef28156162883d2412fffecb6b750" },
