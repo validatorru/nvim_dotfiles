@@ -15,7 +15,8 @@ vim.opt.rtp:prepend(lazypath)
 -- Custom nvim settings
 vim.opt.number = true
 vim.opt.rnu = true
-vim.opt.mouse = 'a'
+vim.opt.mouse = 'nicr'
+vim.opt.mousescroll = 'ver:5,hor:2'
 vim.opt.encoding = 'utf-8'
 vim.opt.swapfile = false
 vim.opt.scrolloff = 1
