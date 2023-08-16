@@ -36,6 +36,7 @@ return {
     vim.keymap.set('n', ',ff', builtin.find_files, {})
     -- Open text search
     vim.keymap.set('n', ',fg', builtin.live_grep, {})
+    vim.keymap.set('n', ',fG', builtin.grep_string, {})
     --  Open buffers list
     vim.keymap.set('n', ',fb', builtin.buffers, {})
     -- Open tabs list
