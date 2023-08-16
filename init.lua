@@ -61,8 +61,7 @@ vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
 })
 vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
   pattern = {"*.vue"},
-  command = "setlocal expandtab",
-})
+  command = "setlocal expandtab", })
 vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
   pattern = {"*.vue"},
   command = "setlocal tabstop=2",
