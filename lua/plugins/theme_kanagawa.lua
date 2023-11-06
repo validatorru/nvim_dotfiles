@@ -12,10 +12,10 @@ return {
                     end
                 end,
             }),
-            compile = false,             -- enable compiling the colorscheme
+            compile = true,             -- enable compiling the colorscheme
             undercurl = true,            -- enable undercurls
             commentStyle = { italic = true },
-            functionStyle = {},
+            functionStyle = { italic = true },
             keywordStyle = { italic = true},
             statementStyle = { bold = true },
             typeStyle = {},
@@ -26,7 +26,7 @@ return {
                 palette = {},
                 theme = { wave = {}, lotus = {}, dragon = {}, all = {} },
             },
-            theme = "wave",              -- Load "wave" theme when 'background' option is not set
+            theme = "lotus",              -- Load "wave" theme when 'background' option is not set
             background = {               -- map the value of 'background' option to a theme
                 dark = "dragon",           -- try "dragon" !
                 light = "lotus"

@@ -28,12 +28,14 @@ vim.opt.autoindent = true
 vim.opt.fileformat = unix
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
-vim.opt.foldcolumn = '3'
+vim.opt.foldcolumn = '1'
 vim.opt.colorcolumn = '79'
-vim.opt.cursorline = true
-vim.opt.foldcolumn = '4'
+vim.opt.cursorline = false
+vim.o.signcolumn = "number"
+-- vim.opt.signcolumn = "number"
 
 
+vim.api.nvim_create_user_command('Q', 'q', {})
 -- Enter normal mode when certain rarely used keys are triggered
 vim.keymap.set('i', 'jj', '<esc>')
 vim.keymap.set('i', 'jk', '<esc>')
@@ -90,3 +92,34 @@ vim.keymap.set('ia', 'lgi', "logging.info(f'')<ESC>F';a")
 vim.keymap.set('ia', 'hml', "hm_log(f'')<ESC>F';a")
 vim.keymap.set('ia', 'importhm', "from helpers.logging_helper import hm_log<ESC>")
 
+
+-- blade files treesitter
+
+local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
+parser_config.blade = {
+  install_info = {
+    url = "https://github.com/EmranMR/tree-sitter-blade",
+    files = {"src/parser.c"},
+    branch = "main",
+  },
+  filetype = "blade"
+}
+local augroup = vim.api.nvim_create_augroup   -- Create/get autocommand group
+local autocmd = vim.api.nvim_create_autocmd
+
+autocmd('BufRead',  {
+  pattern='*.blade.php',
+  command='set ft=blade'
+})
+-- autocmd('BufNewFile,BufRead',  {
+--   pattern='*.blade.php',
+--   command='set ft=blade'
+-- })
+
+-- highlight yanked text for 200ms using the "Visual" highlight group
+vim.cmd[[
+  augroup highlight_yank
+  autocmd!
+  au TextYankPost * silent! lua vim.highlight.on_yank({higroup="Visual", timeout=200})
+  augroup END
+]]

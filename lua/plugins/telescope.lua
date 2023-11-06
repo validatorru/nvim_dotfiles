@@ -45,6 +45,7 @@ return {
     vim.keymap.set('n', ',fm', ':Telescope media_files <CR>', {})
     -- Open symbols list
     vim.keymap.set('n', ',fa', ':Telescope aerial <CR>', {})
+    -- vim.keymap.set('n', ',fa', ':Telescope aerial <CR>', {})
 
   end,
   dependencies = {
