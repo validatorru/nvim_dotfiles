@@ -30,6 +30,9 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.foldcolumn = '1'
 vim.opt.colorcolumn = '79'
+vim.api.nvim_set_option_value("colorcolumn", "79", {
+  scope = "local",
+})
 vim.opt.cursorline = false
 vim.o.signcolumn = "number"
 -- vim.opt.signcolumn = "number"
@@ -55,6 +58,9 @@ vim.keymap.set('n', '<Space>k', ':bp<CR>')
 vim.keymap.set('n', '<Space>j', ':bn<CR>')
 vim.keymap.set('n', '<Space>l', ':tabn<CR>')
 vim.keymap.set('n', '<Space>h', ':tabp<CR>')
+
+vim.keymap.set('n', ',c', ':set cc=<CR>')
+vim.keymap.set('n', ',C', ':set cc=79<CR>')
 
 -- VueJS file settings
 vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
