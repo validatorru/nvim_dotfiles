@@ -32,6 +32,7 @@ return {
     require('telescope').load_extension('telescope-tabs')
     require('telescope').load_extension('env')
     require('telescope').load_extension('aerial')
+    require("telescope").load_extension("noice")
     -- Open find files 
     vim.keymap.set('n', ',ff', builtin.find_files, {})
     -- Open text search
