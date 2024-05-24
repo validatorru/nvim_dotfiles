@@ -63,25 +63,25 @@ vim.keymap.set('n', ',c', ':set cc=<CR>')
 vim.keymap.set('n', ',C', ':set cc=79<CR>')
 
 -- VueJS file settings
-vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
-  pattern = {"*.vue"},
-  command = "setlocal filetype=vue",
-})
-vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
-  pattern = {"*.vue"},
-  command = "setlocal expandtab", })
-vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
-  pattern = {"*.vue"},
-  command = "setlocal tabstop=2",
-})
-vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
-  pattern = {"*.vue"},
-  command = "setlocal softtabstop=2",
-})
-vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
-  pattern = {"*.vue"},
-  command = "setlocal shiftwidth=2",
-})
+-- vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
+--   pattern = {"*.vue"},
+--   command = "setlocal filetype=vue",
+-- })
+-- vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
+--   pattern = {"*.vue"},
+--   command = "setlocal expandtab", })
+-- vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
+--   pattern = {"*.vue"},
+--   command = "setlocal tabstop=2",
+-- })
+-- vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
+--   pattern = {"*.vue"},
+--   command = "setlocal softtabstop=2",
+-- })
+-- vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
+--   pattern = {"*.vue"},
+--   command = "setlocal shiftwidth=2",
+-- })
 
 
 vim.g.mapleader = "<Space>"
