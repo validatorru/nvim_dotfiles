@@ -27,7 +27,7 @@ return {
       })
     local builtin = require('telescope.builtin')
     require('telescope').load_extension('media_files')
-    require('telescope').load_extension('http')
+    -- require('telescope').load_extension('http')
     require('telescope').load_extension('coc')
     require('telescope').load_extension('telescope-tabs')
     require('telescope').load_extension('env')
@@ -55,7 +55,7 @@ return {
     {'LinArcX/telescope-env.nvim'},
     {'LukasPietzschmann/telescope-tabs'},
     {'fannheyward/telescope-coc.nvim'},
-    {'barrett-ruth/telescope-http.nvim'},
+    -- {'barrett-ruth/telescope-http.nvim'},
     {'nvim-telescope/telescope-media-files.nvim'},
     {"nvim-telescope/telescope-fzf-native.nvim",
       build = "make",
