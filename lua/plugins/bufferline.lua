@@ -9,7 +9,7 @@ return {
             options = {
                 -- style_preset = bufferline.style_preset.minimal, -- or bufferline.style_preset.minimal,
                 mode = "tabs", -- set to "tabs" to only show tabpages instead
-                -- separator_style = 'slant',
+                separator_style = 'slant',
                 themable = true, -- allows highlight groups to be overriden i.e. sets highlights as default
             },
         }
