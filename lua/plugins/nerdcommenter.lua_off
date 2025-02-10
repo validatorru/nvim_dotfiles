@@ -1,7 +1,0 @@
-return {
-    'preservim/nerdcommenter',
-    version = "*",
-    config = function()
-        vim.keymap.set('n', 'gcc', ':call nerdcommenter#Comment(0, "toggle")<CR>')
-    end,
-}
