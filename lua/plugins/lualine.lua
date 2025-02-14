@@ -48,21 +48,20 @@ return {
                 },
                 lualine_x = {},
                 lualine_y = { 'filetype', 'progress' },
-                lualine_z = {
-                    {
-                        'location',
-                        separator = { right = '' },
-                        left_padding = 2
-                    },
-                },
             },
             inactive_sections = {
-                lualine_a = { 'filename' },
-                lualine_b = {},
-                -- lualine_c = {},
+                lualine_a = {
+                    { 'filename', path = 1 },
+                    'location',
+                },
+                lualine_b = { 
+                    '%=', -- empty
+                },
+                lualine_c = {
+                    '%=', -- empty
+                },
                 lualine_x = {},
-                -- lualine_y = {},
-                -- lualine_z = { 'location' },
+                lualine_y = { 'filetype', 'progress' },
             },
             tabline = {},
             extensions = {},
