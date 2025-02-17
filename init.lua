@@ -83,6 +83,15 @@ vim.keymap.set('n', ',C', ':set cc=79<CR>')
 --   command = "setlocal shiftwidth=2",
 -- })
 
+vim.api.nvim_create_autocmd({"BufNewFile", "BufRead", "BufEnter", "BufWinEnter", }, {
+  pattern = {"*.blade.php"},
+  command = "set filetype=blade",
+})
+
+-- augroup BladeFiltypeRelated
+--   au BufNewFile,BufRead *.blade.php set ft=blade
+-- augroup END
+
 
 vim.g.mapleader = "<Space>"
 vim.g.maplocalleader = "<Space>"
@@ -113,15 +122,20 @@ parser_config.blade = {
 local augroup = vim.api.nvim_create_augroup   -- Create/get autocommand group
 local autocmd = vim.api.nvim_create_autocmd
 
-autocmd('BufRead',  {
-  pattern='*.blade.php',
-  command='set ft=blade'
-})
+-- autocmd('BufRead',  {
+--   pattern='*.blade.php',
+--   command='set ft=blade'
+-- })
 -- autocmd('BufNewFile,BufRead',  {
 --   pattern='*.blade.php',
 --   command='set ft=blade'
 -- })
 
+vim.filetype.add({
+  pattern = {
+    ['.*%.blade%.php'] = 'blade',
+  },
+})
 -- highlight yanked text for 200ms using the "Visual" highlight group
 vim.cmd[[
   augroup highlight_yank
