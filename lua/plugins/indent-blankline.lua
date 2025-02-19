@@ -13,16 +13,24 @@ return {
         }
         local hooks = require "ibl.hooks"
         hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
-            vim.api.nvim_set_hl(0, "RainbowRed", { fg = "#E06C75" })
-            vim.api.nvim_set_hl(0, "RainbowYellow", { fg = "#E5C07B" })
-            vim.api.nvim_set_hl(0, "RainbowBlue", { fg = "#61AFEF" })
-            vim.api.nvim_set_hl(0, "RainbowOrange", { fg = "#D19A66" })
-            vim.api.nvim_set_hl(0, "RainbowGreen", { fg = "#98C379" })
-            vim.api.nvim_set_hl(0, "RainbowViolet", { fg = "#C678DD" })
-            vim.api.nvim_set_hl(0, "RainbowCyan", { fg = "#56B6C2" })
+            vim.g.indent_blankline_show_current_context = true
+            vim.api.nvim_set_hl(0, "RainbowRed", { fg = "#612f33" })
+            vim.api.nvim_set_hl(0, "RainbowYellow", { fg = "#6f5c3b" })
+            vim.api.nvim_set_hl(0, "RainbowBlue", { fg = "#1e374c" })
+            vim.api.nvim_set_hl(0, "RainbowOrange", { fg = "#3d2c1d" })
+            vim.api.nvim_set_hl(0, "RainbowGreen", { fg = "#26321d" })
+            vim.api.nvim_set_hl(0, "RainbowViolet", { fg = "#3a2341" })
+            vim.api.nvim_set_hl(0, "RainbowCyan", { fg = "#142b2e" })
         end)
-        -- require("ibl").setup()
-        require("ibl").setup({ indent = { highlight = highlight } } )
+        require("ibl").setup(
+            {
+                indent = { highlight = highlight },
+                scope = {
+                    enabled = true,
+                    char = "┃",
+                },
+            }
+        )
     end,
     -- Optional dependencies
     dependencies = { "nvim-tree/nvim-web-devicons" },
