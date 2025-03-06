@@ -66,6 +66,7 @@ return {
             tabline = {},
             extensions = {},
         }
+        -- require('transparent').clear_prefix('lualine')
     end,
     dependencies = { 'nvim-web-devicons' }
 }

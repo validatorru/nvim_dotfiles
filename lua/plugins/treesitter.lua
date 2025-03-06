@@ -35,7 +35,7 @@ return {
     indent = { enable = true },
     ensure_installed = {
       "bash",
-      "blade",
+      -- "blade",
       "c",
       "html",
       "javascript",
