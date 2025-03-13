@@ -39,6 +39,12 @@ return {
                 theme = bubbles_theme,
                 component_separators = '',
                 section_separators = { left = '', right = '' },
+                globalstatus = true,
+                refresh = {
+                    statusline = 1000,
+                    tabline = 1000,
+                    winbar = 1000,
+                },
             },
             sections = {
                 lualine_a = { { 'mode', separator = { left = '' }, right_padding = 2 } },
@@ -63,7 +69,14 @@ return {
                 lualine_x = {},
                 lualine_y = { 'filetype', 'progress' },
             },
-            tabline = {},
+            tabline = {
+                lualine_a = { 'buffers' },
+                lualine_b = {},
+                lualine_c = {},
+                lualine_x = {},
+                lualine_y = {},
+                lualine_z = { 'tabs' },
+            },
             extensions = {},
         }
         -- require('transparent').clear_prefix('lualine')
