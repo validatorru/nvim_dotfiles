@@ -30,6 +30,9 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.foldcolumn = '1'
 vim.opt.colorcolumn = '79'
+vim.api.nvim_set_option_value("termguicolors", true, {
+  scope = "local",
+})
 vim.api.nvim_set_option_value("colorcolumn", "79", {
   scope = "local",
 })
