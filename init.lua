@@ -145,3 +145,5 @@ vim.cmd[[
 ]]
 -- Enable twilight by default
 vim.cmd("TwilightEnable")
+
+vim.opt.virtualedit = "block"
