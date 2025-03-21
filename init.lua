@@ -54,10 +54,10 @@ vim.keymap.set('n', '<Space><Right>', ':tabn<CR>')
 vim.keymap.set('n', '<Space><Left>', ':tabp<CR>')
 
 -- Cycle buffers by space + nav keys
-vim.keymap.set('n', '<Space>k', ':bp<CR>')
-vim.keymap.set('n', '<Space>j', ':bn<CR>')
-vim.keymap.set('n', '<Space>l', ':tabn<CR>')
-vim.keymap.set('n', '<Space>h', ':tabp<CR>')
+vim.keymap.set('n', '<space>j', ':bp<CR>')
+vim.keymap.set('n', '<space>k', ':bn<CR>')
+vim.keymap.set('n', '<space>h', ':tabn<CR>')
+vim.keymap.set('n', '<space>l', ':tabp<CR>')
 
 vim.keymap.set('n', ',c', ':set cc=<CR>')
 vim.keymap.set('n', ',C', ':set cc=79<CR>')
