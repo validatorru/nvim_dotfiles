@@ -146,7 +146,5 @@ vim.cmd[[
   au TextYankPost * silent! lua vim.highlight.on_yank({higroup="Visual", timeout=200})
   augroup END
 ]]
--- Enable twilight by default
-vim.cmd("TwilightEnable")
 
 vim.opt.virtualedit = "block"
