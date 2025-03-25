@@ -51,8 +51,6 @@ return {
         },
       },
       messages = {
-        view = "split",
-        enter = true,
       },
       lsp = {
         override = {
