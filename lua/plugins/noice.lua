@@ -16,15 +16,15 @@ return {
       views = {
         cmdline_popup = {
           position = {
-            row = 5,
+            row = "50%",
             col = "50%",
           },
           size = {
-            width = 60,
+            width = "50%",
             height = "auto",
           },
           border = {
-            style = "none",
+            style = "rounded",
             padding = { 2, 2 },
           },
           win_options = {
@@ -51,7 +51,7 @@ return {
         },
       },
       messages = {
-        view = "mini",
+        view = "split",
         enter = true,
       },
       lsp = {
