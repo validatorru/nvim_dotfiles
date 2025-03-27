@@ -30,13 +30,16 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.foldcolumn = '1'
 vim.opt.colorcolumn = '79'
+vim.opt.cursorline = true
+vim.api.nvim_set_hl(0, 'CursorLine', { bg = '#3c3836' })
+vim.o.cursorlineopt ='both'
 vim.api.nvim_set_option_value("termguicolors", true, {
   scope = "local",
 })
 vim.api.nvim_set_option_value("colorcolumn", "79", {
   scope = "local",
 })
-vim.opt.cursorline = false
+-- vim.opt.cursorline = false
 vim.o.signcolumn = "number"
 -- vim.opt.signcolumn = "number"
 
