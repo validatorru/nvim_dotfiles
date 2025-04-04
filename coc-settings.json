@@ -1,6 +1,2 @@
 {
-"diagnostic.virtualText": false,
-"diagnostic.virtualTextCurrentLineOnly": true,
-"pyright.enable": false,
-"mypy.enable": false,
 }
