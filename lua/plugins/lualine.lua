@@ -52,7 +52,9 @@ return {
                 lualine_c = {
                     '%=', -- empty
                 },
-                lualine_x = {},
+                lualine_x = {
+                    "aerial"
+                },
                 lualine_y = { 'filetype', 'progress' },
             },
             inactive_sections = {
@@ -66,7 +68,8 @@ return {
                 lualine_c = {
                     '%=', -- empty
                 },
-                lualine_x = {},
+                lualine_x = {
+                },
                 lualine_y = { 'filetype', 'progress' },
             },
             tabline = {
