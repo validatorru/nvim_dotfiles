@@ -32,13 +32,15 @@ vim.opt.foldcolumn = '1'
 vim.opt.colorcolumn = '79'
 vim.opt.cursorline = true
 vim.api.nvim_set_hl(0, 'CursorLine', { bg = '#3c3836' })
+vim.api.nvim_set_hl(0, 'WinSeparator', { fg = '#000000' })
 vim.o.cursorlineopt ='both'
 vim.api.nvim_set_option_value("termguicolors", true, {
   scope = "local",
 })
-vim.api.nvim_set_option_value("colorcolumn", "79", {
-  scope = "local",
-})
+-- vim.api.nvim_set_option_value("colorcolumn", "79", {
+--   scope = "local",
+-- })
+-- vim.api.nvim_set_hl(0, "ColorColumn", { fg = "#ff0000" }) -- Set colorcolumn to red
 -- vim.opt.cursorline = false
 vim.o.signcolumn = "number"
 -- vim.opt.signcolumn = "number"
@@ -115,7 +117,6 @@ vim.keymap.set('ia', 'importhm', "from helpers.logging_helper import hm_log<ESC>
 
 
 -- blade files treesitter
-
 local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
 parser_config.blade = {
   install_info = {
@@ -125,23 +126,16 @@ parser_config.blade = {
   },
   filetype = "blade"
 }
+
 local augroup = vim.api.nvim_create_augroup   -- Create/get autocommand group
 local autocmd = vim.api.nvim_create_autocmd
-
--- autocmd('BufRead',  {
---   pattern='*.blade.php',
---   command='set ft=blade'
--- })
--- autocmd('BufNewFile,BufRead',  {
---   pattern='*.blade.php',
---   command='set ft=blade'
--- })
 
 vim.filetype.add({
   pattern = {
     ['.*%.blade%.php'] = 'blade',
   },
 })
+
 -- highlight yanked text for 200ms using the "Visual" highlight group
 vim.cmd[[
   augroup highlight_yank
@@ -153,14 +147,9 @@ vim.cmd[[
 vim.opt.virtualedit = "block"
 
 vim.diagnostic.config({
-  -- Use the default configuration
   virtual_lines = true
-
-  -- Alternatively, customize specific options
-  -- virtual_lines = {
-  --  -- Only show virtual line diagnostics for the current cursor line
-  --  current_line = true,
-  -- },
 })
+
 vim.g.loaded_perl_provider = 0
 require('render-markdown').setup({ latex = { enabled = false } })
+vim.api.nvim_set_hl(0, 'ColorColumn', { bg = none, fg = '#612f33' })
