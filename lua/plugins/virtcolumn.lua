@@ -4,7 +4,7 @@ return {
         require("virt-column").setup(
             {
                 -- char = "|" ,
-                virtcolumn = "79,120",
+                virtcolumn = "79",
                 highlight = "ColorColumn"
             }
         )
