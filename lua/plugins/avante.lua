@@ -24,11 +24,11 @@ return {
                 model = "copilot",
             },
         },
-        keybindings = {
-            toggle = ",aa", -- Toggle Avante UI (changed from `<leader>aa`)
-            -- ask = ",aq",    -- Ask Avante a question (unchanged)
-            insert = ",ai", -- Insert AI-generated text (changed from `<leader>ai`)
-        },
+        -- keybindings = {
+        --     toggle = ",aa", -- Toggle Avante UI (changed from `<leader>aa`)
+        --     -- ask = ",aq",    -- Ask Avante a question (unchanged)
+        --     insert = ",ai", -- Insert AI-generated text (changed from `<leader>ai`)
+        -- },
     },
     build = "make",
     dependencies = {
@@ -74,14 +74,14 @@ return {
     config = function(_, opts)
         require("avante").setup(opts)
         -- Additional setup for keybindings
-        vim.keymap.set("n", opts.keybindings.toggle, function()
-            require("avante").toggle()
-        end, { desc = "Toggle Avante UI" })
-        vim.keymap.set("n", opts.keybindings.ask, function()
-            require("avante").ask()
-        end, { desc = "Ask Avante a question" })
-        vim.keymap.set("n", opts.keybindings.insert, function()
-            require("avante").insert()
-        end, { desc = "Insert AI-generated text" })
+        -- vim.keymap.set("n", opts.keybindings.toggle, function()
+        --     require("avante").toggle()
+        -- end, { desc = "Toggle Avante UI" })
+        -- vim.keymap.set("n", opts.keybindings.ask, function()
+        --     require("avante").ask()
+        -- end, { desc = "Ask Avante a question" })
+        -- vim.keymap.set("n", opts.keybindings.insert, function()
+        --     require("avante").insert()
+        -- end, { desc = "Insert AI-generated text" })
     end,
 }
