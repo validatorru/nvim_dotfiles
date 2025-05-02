@@ -14,21 +14,7 @@ return {
                 -- model = "deepseek-chat", -- your desired model (or use gpt-4o, etc.)
                 max_tokens = 8192,
             },
-            openai = {
-                api_key_name = "OPENAI_API_KEY",
-                model = "gpt-4",
-                max_tokens = 4096,
-            },
-            copilot = {
-                api_key_name = "COPILOT_API_KEY",
-                model = "copilot",
-            },
         },
-        -- keybindings = {
-        --     toggle = ",aa", -- Toggle Avante UI (changed from `<leader>aa`)
-        --     -- ask = ",aq",    -- Ask Avante a question (unchanged)
-        --     insert = ",ai", -- Insert AI-generated text (changed from `<leader>ai`)
-        -- },
     },
     build = "make",
     dependencies = {
@@ -43,33 +29,6 @@ return {
         "ibhagwan/fzf-lua", -- for file_selector provider fzf
         "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
         "zbirenbaum/copilot.lua", -- for providers='copilot'
-        {
-            "HakonHarnes/img-clip.nvim",
-            event = "VeryLazy",
-            opts = {
-                default = {
-                    embed_image_as_base64 = true, -- Enable base64 embedding for better compatibility
-                    prompt_for_file_name = false,
-                    drag_and_drop = {
-                        insert_mode = true,
-                    },
-
-                    use_absolute_path = true,
-                },
-            },
-        },
-        {
-
-            'MeanderingProgrammer/render-markdown.nvim',
-            opts = {
-                file_types = { "markdown", "Avante" },
-                render = {
-                    highlight = true, -- Enable syntax highlighting
-                    toc = true,       -- Enable table of contents
-                },
-            },
-            ft = { "markdown", "Avante" },
-        },
     },
     config = function(_, opts)
         require("avante").setup(opts)
