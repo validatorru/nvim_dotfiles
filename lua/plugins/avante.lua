@@ -10,8 +10,8 @@ return {
                 __inherited_from = "openai",
                 api_key_name = "OPENAI_API_KEY",
                 endpoint = "https://api.deepseek.com",
-                model = "deepseek-coder",
-                -- model = "deepseek-chat", -- your desired model (or use gpt-4o, etc.)
+                -- model = "deepseek-coder",
+                model = "deepseek-chat", -- your desired model (or use gpt-4o, etc.)
                 max_tokens = 8192,
             },
         },
