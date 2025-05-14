@@ -6,37 +6,43 @@ return {
         -- MIT license, see LICENSE for more details.
 
         -- stylua: ignore
+        -- get colors from
+        -- https://github.com/nshern/neovim-default-colorscheme-extras?tab=readme-ov-file
         local colors = {
-            blue   = '#80a0ff',
-            cyan   = '#79dac8',
+            -- blue   = '#80a0ff',
+            -- cyan   = '#79dac8',
             black  = '#080808',
             white  = '#c6c6c6',
-            red    = '#ff5189',
-            violet = '#d183e8',
+            NvimLightGreen = '#b4f6c0',
+            NvimDarkGreen = '#005523',
+            NvimDarkGrey1 = '#07080D',
+            -- red    = '#ff5189',
+            -- violet = '#d183e8',
             grey   = '#303030',
         }
 
         local bubbles_theme = {
             normal = {
-                a = { fg = colors.black, bg = colors.violet },
+                a = { fg = colors.black, bg = colors.NvimLightGreen },
                 b = { fg = colors.white, bg = colors.grey },
                 c = { fg = colors.white },
             },
-
-            insert = { a = { fg = colors.black, bg = colors.blue } },
-            visual = { a = { fg = colors.black, bg = colors.cyan } },
-            replace = { a = { fg = colors.black, bg = colors.red } },
-
+            --
+            -- insert = { a = { fg = colors.black, bg = colors.blue } },
+            -- visual = { a = { fg = colors.black, bg = colors.cyan } },
+            -- replace = { a = { fg = colors.black, bg = colors.red } },
+            --
             inactive = {
-                a = { fg = colors.white, bg = colors.black },
-                b = { fg = colors.white, bg = colors.black },
-                c = { fg = colors.white },
+                a = { fg = colors.NvimLightGreen, bg = colors.black },
+                b = { fg = colors.NvimLightGreen, bg = colors.black },
+                c = { fg = colors.NvimLightGreen },
             },
         }
 
         require('lualine').setup {
             options = {
                 theme = bubbles_theme,
+                -- theme = 'base16',
                 component_separators = '',
                 section_separators = { left = '', right = '' },
                 globalstatus = true,
