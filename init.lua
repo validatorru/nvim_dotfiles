@@ -15,6 +15,7 @@ vim.opt.rtp:prepend(lazypath)
 -- Custom nvim settings
 vim.opt.number = true
 vim.opt.rnu = true
+-- vim.o.statuscolumn = "%v:num %v:relnum %s %C "
 vim.opt.mouse = 'nicr'
 vim.opt.mousescroll = 'ver:5,hor:2'
 vim.opt.encoding = 'utf-8'
@@ -42,7 +43,8 @@ vim.api.nvim_set_option_value("termguicolors", true, {
 -- })
 -- vim.api.nvim_set_hl(0, "ColorColumn", { fg = "#ff0000" }) -- Set colorcolumn to red
 -- vim.opt.cursorline = false
-vim.o.signcolumn = "number"
+-- vim.o.signcolumn = "number"
+
 -- vim.opt.signcolumn = "number"
 
 
@@ -114,6 +116,7 @@ vim.keymap.set('ia', 'clls', "console.log('')<ESC>F';a")
 vim.keymap.set('ia', 'lgi', "logging.info(f'')<ESC>F';a")
 vim.keymap.set('ia', 'hml', "hm_log(f'')<ESC>F';a")
 vim.keymap.set('ia', 'importhm', "from helpers.logging_helper import hm_log<ESC>")
+vim.keymap.set('ia', 'bdr', "border: 1px solid red;<ESC>")
 
 
 -- blade files treesitter
