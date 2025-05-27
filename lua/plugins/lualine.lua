@@ -82,7 +82,7 @@ return {
                 lualine_a = {
                     {
                         'tabs',
-                        mode = 2
+                        mode = 2,
                     }
                 },
                 lualine_b = {},
