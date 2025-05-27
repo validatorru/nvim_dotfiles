@@ -3,7 +3,7 @@ return {
     config = function()
         require("virt-column").setup(
             {
-                char = "⏐" ,
+                char = "∙" ,
                 virtcolumn = "79",
                 highlight = "ColorColumn"
             }
