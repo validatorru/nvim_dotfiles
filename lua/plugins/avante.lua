@@ -13,6 +13,7 @@ return {
                 model = "deepseek-chat", -- your desired model (or use gpt-4o, etc.)
                 max_tokens = 8192
             },
+        },
         -- This is snail slow and buggy for some reason  
         -- provider = "ollama",
         -- providers = {
