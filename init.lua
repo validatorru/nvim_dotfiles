@@ -12,6 +12,19 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+
+-- vim.opt.termguicolors
+-- vim.opt.background=dark
+
+
+-- vim.colorscheme zenbones
+
+-- vim.cmd 'colorscheme zenbones'
+-- local colorscheme = "kanagawabones"
+local colorscheme = "zenwritten"
+local ok, _ = pcall(vim.cmd, "colorscheme " .. colorscheme)
+vim.o.background = "dark" -- or "light" for light mode
+
 -- Custom nvim settings
 vim.opt.number = true
 vim.opt.rnu = true
@@ -38,15 +51,6 @@ vim.o.cursorlineopt ='both'
 vim.api.nvim_set_option_value("termguicolors", true, {
     scope = "local",
 })
--- vim.api.nvim_set_option_value("colorcolumn", "79", {
---   scope = "local",
--- })
--- vim.api.nvim_set_hl(0, "ColorColumn", { fg = "#ff0000" }) -- Set colorcolumn to red
--- vim.opt.cursorline = false
--- vim.o.signcolumn = "number"
-
--- vim.opt.signcolumn = "number"
-
 
 vim.api.nvim_create_user_command('Q', 'q', {})
 -- Enter normal mode when certain rarely used keys are triggered

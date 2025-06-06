@@ -4,17 +4,28 @@ return {
     lazy = false,
     version = false, -- Set this to "*" to always pull the latest release version, or set it to false to update to the latest code changes.
     opts = {
-        provider = "deepseek",
+        provider = "openai",
         vendors = {
-            deepseek = {
+            openai = {
                 __inherited_from = "openai",
                 api_key_name = "OPENAI_API_KEY",
                 endpoint = "https://api.deepseek.com",
-                -- model = "deepseek-coder",
                 model = "deepseek-chat", -- your desired model (or use gpt-4o, etc.)
-                max_tokens = 8192,
+                max_tokens = 8192
             },
-        },
+        -- This is snail slow and buggy for some reason  
+        -- provider = "ollama",
+        -- providers = {
+        --     ollama = {
+        --         endpoint = "127.0.0.1:11434",
+        --         model = "qwen2.5-coder:7b",
+        --         extra_request_body = {
+        --             options = {
+        --                 keep_alive = false,
+        --             }
+        --         }
+        --     },
+        -- },
     },
     build = "make",
     dependencies = {
