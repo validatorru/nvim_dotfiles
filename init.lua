@@ -20,8 +20,10 @@ vim.opt.rtp:prepend(lazypath)
 -- vim.colorscheme zenbones
 
 -- vim.cmd 'colorscheme zenbones'
--- local colorscheme = "kanagawabones"
-local colorscheme = "zenwritten"
+-- local colorscheme = "zenbones"
+local colorscheme = "kanagawabones"
+-- local colorscheme = "zenwritten"
+-- local colorscheme = "zenwritten"
 local ok, _ = pcall(vim.cmd, "colorscheme " .. colorscheme)
 vim.o.background = "dark" -- or "light" for light mode
 
@@ -156,6 +158,9 @@ vim.opt.virtualedit = "block"
 vim.diagnostic.config({
     virtual_lines = true
 })
+
+
+vim.g.loaded_ruby_provider = 0
 
 -- views can only be fully collapsed with the global statusline
 vim.opt.laststatus = 3
