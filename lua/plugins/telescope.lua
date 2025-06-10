@@ -13,7 +13,8 @@ return {
                     -- defaults to {"png", "jpg", "mp4", "webm", "pdf"}
                     filetypes = {"png", "webp", "jpg", "jpeg"},
                     -- find command (defaults to `fd`)
-                    find_cmd = "rg"
+                    find_cmd = "rg",
+                    image_stretch = 100
                 },
                 aerial = {
                     -- Display symbols as <root>.<parent>.<symbol>
