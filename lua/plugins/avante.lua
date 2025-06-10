@@ -5,13 +5,17 @@ return {
     version = false, -- Set this to "*" to always pull the latest release version, or set it to false to update to the latest code changes.
     opts = {
         provider = "openai",
-        vendors = {
+        providers = {
             openai = {
-                __inherited_from = "openai",
-                api_key_name = "OPENAI_API_KEY",
-                endpoint = "https://api.deepseek.com",
-                model = "deepseek-chat", -- your desired model (or use gpt-4o, etc.)
-                max_tokens = 8192
+                vendors = {
+                    openai = {
+                        __inherited_from = "openai",
+                        api_key_name = "OPENAI_API_KEY",
+                        endpoint = "https://api.deepseek.com",
+                        model = "deepseek-chat", -- your desired model (or use gpt-4o, etc.)
+                        max_tokens = 8192
+                    },
+                },
             },
         },
         -- This is snail slow and buggy for some reason  
