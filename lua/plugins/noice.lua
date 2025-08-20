@@ -20,12 +20,12 @@ return {
                         col = "50%",
                     },
                     size = {
-                        width = "50%",
+                        width = "80",
                         height = "auto",
                     },
                     border = {
-                        style = "rounded",
-                        padding = { 2, 2 },
+                        style = "none",
+                        padding = { 1, 2 },
                     },
                     win_options = {
                         winhighlight = "NormalFloat:NormalFloat,FloatBorder:FloatBorder",
@@ -40,12 +40,12 @@ return {
                         col = "50%",
                     },
                     size = {
-                        width = '50%',
+                        width = '84',
                         height = 10,
                     },
                     border = {
                         style = "none",
-                        padding = { 4, 2 },
+                        padding = { 1, 2 },
                     },
                     win_options = {
                         winhighlight = "NormalFloat:NormalFloat,FloatBorder:FloatBorder",
@@ -100,7 +100,23 @@ return {
                 silent = true, -- set to true to not show a message if hover is not available
                 view = nil, -- when nil, use defaults from documentation
                 ---@type NoiceViewOptions
-                opts = {}, -- merged with defaults from documentation
+                opts = {
+                    border = {
+                        style = "none",
+                        padding = { 4, 2 },
+                    },
+                }, -- merged with defaults from documentation
+            },
+            -- defaults for hover and signature help
+            documentation = {
+                view = "hover",
+                opts = {
+                    lang = "markdown",
+                    replace = true,
+                    render = "plain",
+                    format = { "{message}" },
+                    win_options = { concealcursor = "n", conceallevel = 3 },
+                },
             },
             -- you can enable a preset for easier configuration
             presets = {
@@ -108,7 +124,7 @@ return {
                 -- command_palette = true, -- position the cmdline and popupmenu together
                 -- long_message_to_split = true, -- long messages will be sent to a split
                 -- inc_rename = false, -- enables an input dialog for inc-rename.nvim
-                lsp_doc_border = true, -- add a border to hover docs and signature help
+                -- lsp_doc_border = true, -- add a border to hover docs and signature help
             },
         })
     end,
