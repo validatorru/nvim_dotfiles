@@ -12,7 +12,8 @@ return {
                     adapter = {
                         name = "ollama",
                         -- model = "mistral",
-                        model = "deepseek-r1:8b",
+                        -- model = "deepseek-r1:8b",
+                        model = "mistral-nemo:latest",
                     },
                 },
                 inline = {

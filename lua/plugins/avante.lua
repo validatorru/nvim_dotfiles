@@ -22,16 +22,25 @@ return {
         provider = "ollama",
         providers = {
             ollama = {
-                endpoint = "127.0.0.1:11434",
-                model = "qwen2.5-coder:7b",
-                -- model = "gemma3n",
-                extra_request_body = {
-                    options = {
-                        keep_alive = false,
-                    }
-                }
+                api_key_name = "",
+                endpoint = "http://localhost:11434",
+                model = "mistral-nemo:latest",
             },
-        },
+        }
+        -- providers = {
+        --     ollama = {
+        --         -- endpoint = "127.0.0.1:11434/v1",
+        --         endpoint =  "localhost:11434",
+        --         -- model = "deepseek-r1:8b",
+        --         model = "mistral-nemo:latest",
+        --         -- model = "gemma3n",
+        --         -- extra_request_body = {
+        --         --     options = {
+        --         --         keep_alive = false,
+        --         --     }
+        --         -- }
+        --     },
+        -- },
     },
     build = "make",
     dependencies = {

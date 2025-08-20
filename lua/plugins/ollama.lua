@@ -31,7 +31,8 @@ return {
         -- model = "deepseek-r1:14b",
         -- model = "deepcoder",
         -- model = "deepcoder:1.5b",
-        model = "deepcoder:14b",
+        -- model = "deepcoder:14b",
+        model = "mistral-nemo:latest",
         url = "http://127.0.0.1:11434",
         serve = {
             on_start = false,
