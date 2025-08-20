@@ -40,9 +40,12 @@ return {
         }
 
         require('lualine').setup {
+            -- options = { theme = "zenbones" },
             options = {
-                theme = bubbles_theme,
-                -- theme = 'base16',
+                -- theme = bubbles_theme,
+                theme = "zenbones",
+                -- theme = "neobones",
+                -- theme = "zenwritten",
                 component_separators = '',
                 section_separators = { left = '', right = '' },
                 globalstatus = true,

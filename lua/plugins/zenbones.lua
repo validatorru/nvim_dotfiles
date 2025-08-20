@@ -3,10 +3,11 @@ return {
     dependencies = "rktjmp/lush.nvim",
     lazy = false,
     priority = 1000,
-    enabled = (jit.os ~= "Linux"),
-    -- you can set set configuration options here
+    enabled = (jit.os ~= "MacOS"),
     config = function()
-        vim.cmd.colorscheme('kanagawabones')
+        vim.cmd.colorscheme('zenbones')
+        -- vim.cmd.colorscheme('zenwritten')
+        -- vim.cmd.colorscheme('neobones')
         darkness = 'stark'
         transparent_background = true
     end
