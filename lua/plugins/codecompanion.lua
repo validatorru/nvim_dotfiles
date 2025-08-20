@@ -11,8 +11,15 @@ return {
                 chat = {
                     adapter = {
                         name = "ollama",
+                        -- model = "mistral",
+                        model = "deepseek-r1:8b",
+                    },
+                },
+                inline = {
+                    adapter = {
+                        name = "ollama",
                         -- model = "deepcoder:1.5b",
-                        model = "mistral",
+                        model = "deepseek-r1:8b",
                     },
                 },
             },
