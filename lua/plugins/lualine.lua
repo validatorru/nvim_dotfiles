@@ -1,51 +1,23 @@
 return {
     'nvim-lualine/lualine.nvim',
+
     config = function()
-        -- Bubbles config for lualine
-        -- Author: lokesh-krishna
-        -- MIT license, see LICENSE for more details.
+        --
+        -- A function to check the status and return the corresponding icon
+        --
+        local function get_status_icon()
+            local status = require("ollama").status()
 
-        -- stylua: ignore
-        -- get colors from
-        -- https://github.com/nshern/neovim-default-colorscheme-extras?tab=readme-ov-file
-        local colors = {
-            -- blue   = '#80a0ff',
-            -- cyan   = '#79dac8',
-            black  = '#080808',
-            white  = '#c6c6c6',
-            NvimLightGreen = '#b4f6c0',
-            NvimDarkGreen = '#005523',
-            NvimDarkGrey1 = '#07080D',
-            -- red    = '#ff5189',
-            -- violet = '#d183e8',
-            grey   = '#303030',
-        }
-
-        local bubbles_theme = {
-            normal = {
-                a = { fg = colors.black, bg = colors.NvimLightGreen },
-                b = { fg = colors.white, bg = colors.grey },
-                c = { fg = colors.white },
-            },
-            --
-            -- insert = { a = { fg = colors.black, bg = colors.blue } },
-            -- visual = { a = { fg = colors.black, bg = colors.cyan } },
-            -- replace = { a = { fg = colors.black, bg = colors.red } },
-            --
-            inactive = {
-                a = { fg = colors.NvimLightGreen, bg = colors.black },
-                b = { fg = colors.NvimLightGreen, bg = colors.black },
-                c = { fg = colors.NvimLightGreen },
-            },
-        }
+            if status == "IDLE" then
+                return "-"
+            elseif status == "WORKING" then
+                return "🧠"
+            end
+        end
 
         require('lualine').setup {
-            -- options = { theme = "zenbones" },
             options = {
-                -- theme = bubbles_theme,
                 theme = "zenbones",
-                -- theme = "neobones",
-                -- theme = "zenwritten",
                 component_separators = '',
                 section_separators = { left = '', right = '' },
                 globalstatus = true,
@@ -56,29 +28,55 @@ return {
                 },
             },
             sections = {
-                lualine_a = { { 'mode', separator = { left = '' }, right_padding = 2 } },
-                lualine_b = { { 'filename', path = 1 }, 'branch', 'location' },
+                lualine_a = {
+                    {
+                        'mode',
+                        separator = { left = '' },
+                        right_padding = 2
+                    }
+                },
+                lualine_b = {
+                    {
+                        'filename',
+                        path = 1
+                    },
+                    'branch',
+                },
                 lualine_c = {
                     '%=', -- empty
                 },
                 lualine_x = {
-                    "aerial"
+                        "aerial",
+                    -- '%=', -- empty
                 },
-                lualine_y = { 'filetype', 'progress' },
+                lualine_y = {
+                        'location',
+                },
+                lualine_z = {
+                    {
+                        'progress',
+                        -- '%=', -- empty
+                        -- 'filetype',
+                        separator = { left = '', right = '' },
+                        right_padding = 2
+                    }
+                },
             },
             inactive_sections = {
                 lualine_a = {
-                    { 'filename', path = 1 },
+                    {
+                        'filename',
+                        path = 1
+                    },
                     'location',
                 },
-                lualine_b = { 
+                lualine_b = {
                     '%=', -- empty
                 },
                 lualine_c = {
                     '%=', -- empty
                 },
-                lualine_x = {
-                },
+                lualine_x = {  },
                 lualine_y = { 'filetype', 'progress' },
             },
             tabline = {
@@ -86,17 +84,25 @@ return {
                     {
                         'tabs',
                         mode = 2,
+                        separator = { left = '', right = '' },
                     }
                 },
                 lualine_b = {},
                 lualine_c = {},
                 lualine_x = {},
-                lualine_y = {},
-                lualine_z = {},
+                lualine_y = {
+                        get_status_icon,
+                },
+                lualine_z = {
+                    {
+                        'filetype',
+                        separator = { left = '', right = '' },
+                        right_padding = 2
+                    }
+                },
             },
             extensions = {},
         }
-        -- require('transparent').clear_prefix('lualine')
     end,
     dependencies = { 'nvim-web-devicons' }
 }
