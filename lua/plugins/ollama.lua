@@ -6,6 +6,7 @@ return {
 
     -- All the user commands added by the plugin
     cmd = { "Ollama", "OllamaModel", "OllamaServe", "OllamaServeStop" },
+    split = true,
 
     keys = {
         -- Sample keybind for prompt menu. Note that the <c-u> is important for selections to work properly.
@@ -42,13 +43,13 @@ return {
             stop_args = { "-SIGTERM", "ollama" },
         },
         -- View the actual default prompts in ./lua/ollama/prompts.lua
-        prompts = {
-            Sample_Prompt = {
-                prompt = "This is a sample prompt that receives $input and $sel(ection), among others.",
-                input_label = "> ",
-                model = "mistral",
-                action = "display",
-            }
-        }
+        -- prompts = {
+        --     Sample_Prompt = {
+        --         prompt = "This is a sample prompt that receives $input and $sel(ection), among others.",
+        --         input_label = "> ",
+        --         model = "mistral",
+        --         action = "display",
+        --     }
+        -- },
     }
 }
