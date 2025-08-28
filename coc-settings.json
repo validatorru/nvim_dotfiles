@@ -1,9 +1,0 @@
-{
-    "diagnostic.virtualText": false,
-    "diagnostic.virtualTextCurrentLineOnly": true,
-    "pyright.enable": false,
-    "mypy.enable": false,
-    "suggest.noselect": true,
-    "suggest.enablePreview": true,
-    "suggest.enablePreselect": false,
-}
