@@ -1,11 +1,14 @@
 return {
-    'nvim-telescope/telescope.nvim', tag = '0.1.5',
+    'nvim-telescope/telescope.nvim',
+    -- tag = '0.1.5',
     config = function()
         require('telescope').setup({
             defaults = {
                 file_ignore_patterns = {
                     "node_modules", "public", "vendor", "*.min.*"
                 },
+                border = true,
+                borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" }
             },
             extensions = {
                 media_files = {
@@ -28,15 +31,13 @@ return {
         })
         local builtin = require('telescope.builtin')
         require('telescope').load_extension('media_files')
-        -- require('telescope').load_extension('http')
-        require('telescope').load_extension('coc')
-        require('telescope').load_extension('telescope-tabs')
         require('telescope').load_extension('env')
         require('telescope').load_extension('aerial')
         require("telescope").load_extension("noice")
         require('telescope').load_extension('git_diffs')
         -- Open find files 
         vim.keymap.set('n', ',ff', builtin.find_files, {})
+        vim.keymap.set('n', ',fo', builtin.oldfiles, {})
         -- Open text search
         vim.keymap.set('n', ',fg', builtin.live_grep, {})
         vim.keymap.set('n', ',fG', builtin.grep_string, {})
@@ -56,8 +57,6 @@ return {
         {'nvim-lua/popup.nvim'},
         {'LinArcX/telescope-env.nvim'},
         {'LukasPietzschmann/telescope-tabs'},
-        {'fannheyward/telescope-coc.nvim'},
-        -- {'barrett-ruth/telescope-http.nvim'},
         {'nvim-telescope/telescope-media-files.nvim'},
         {'paopaol/telescope-git-diffs.nvim',
             dependencies = {
