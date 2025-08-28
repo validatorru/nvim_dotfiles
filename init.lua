@@ -125,6 +125,7 @@ vim.keymap.set('ia', 'importhm', "from helpers.logging_helper import hm_log<ESC>
 vim.keymap.set('ia', 'bdr', "border: 1px solid red;<ESC>")
 
 
+
 -- blade files treesitter
 local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
 parser_config.blade = {
