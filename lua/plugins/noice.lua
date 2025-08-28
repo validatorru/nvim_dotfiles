@@ -102,8 +102,8 @@ return {
                     view = nil, -- when nil, use defaults from documentation
                     opts = {
                         border = {
-                            style = "single",
-                            padding = { 2, 2 },
+                            style = "none",
+                            padding = { 1, 2 },
 
                         },
                         win_options = {
