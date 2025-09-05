@@ -50,6 +50,7 @@ return {
         -- Open symbols list
         vim.keymap.set('n', ',fa', ':Telescope aerial <CR>', {})
         -- vim.keymap.set('n', ',fa', ':Telescope aerial <CR>', {})
+        vim.keymap.set('n', ',fm', builtin.marks, {})
 
     end,
     dependencies = {
