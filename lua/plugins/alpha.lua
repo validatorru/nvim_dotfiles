@@ -17,15 +17,9 @@ header_banner_placeholder = {
     [[]],
     [[]],
     [[]],
-    [[]],
-    [[]],
-    [[]],
-    [[]],
-    [[]],
-    [[]],
 }
-header_banner_img_src = "~/documents/tmp/banner.png"
-header_banner_img = vim.fn.system("chafa ~/documents/tmp/banner.png")
+header_banner_img_src = "~/documents/tmp/banner1.png"
+header_banner_img = vim.fn.system("chafa ~/documents/tmp/banner1.png")
 
 quotation = vim.fn.system("fortune")
 
@@ -48,9 +42,9 @@ quotation = vim.fn.system("fortune")
 -- Image Integration
 local image = nil
 
-local keywords = {"1", "2", "3", "4", "5"}
+local keywords = {"1", "2", "3"}
 
-local image_path = vim.fn.expand("~/Documents/tmp/banner.png") -- Change to your image path
+local image_path = vim.fn.expand("~/Documents/tmp/banner1.png") -- Change to your image path
 -- local paths = io.popen("find ~/Documents/tmp/banner -type f \\( -iname '*.jpg' -o -iname '*.png' \\)", "r")
 local paths = io.popen("find ~/Documents/tmp/banner* -type f", "r")
 local imgs = {}
@@ -75,7 +69,7 @@ i_width, i_height = i_width or image_width, i_height or image_width
 if(i_width*0.75) < i_height then
     image_width = math.ceil(i_width/i_height*image_height)
 end
-vim.notify(image_path)
+-- vim.notify(image_path)
 vim.api.nvim_create_autocmd("User", {
     pattern = "AlphaReady",
     desc = "Render an image on the dashboard",
@@ -97,14 +91,19 @@ vim.api.nvim_create_autocmd("User", {
                 buffer = buf,
                 width = image_width * 1.5,
                 height = image_height * 1.5,
-                x = col,
+                inline = true,
+                x = 0,
                 y = 0,
                 with_virtual_padding = false,
                 id = image_path
             })
             local old_max_height_window_percentage = image.global_state.options.max_height_window_percentage
             image.global_state.options.max_height_window_percentage = 75
-            image:render()
+            image:brightness(90)
+            image:render({
+                x = 100,
+                y = 0,
+            })
             image.global_state.options.max_height_window_percentage = old_max_height_window_percentage
         end, 150)
     end,
