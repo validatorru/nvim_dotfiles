@@ -13,24 +13,13 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 
--- vim.opt.termguicolors
--- vim.opt.background=dark
-
-
--- vim.colorscheme zenbones
-
--- vim.cmd 'colorscheme zenbones'
--- local colorscheme = "zenbones"
 local colorscheme = "kanagawabones"
--- local colorscheme = "zenwritten"
--- local colorscheme = "zenwritten"
 local ok, _ = pcall(vim.cmd, "colorscheme " .. colorscheme)
 vim.o.background = "dark" -- or "light" for light mode
 
 -- Custom nvim settings
 vim.opt.number = true
 vim.opt.rnu = true
--- vim.o.statuscolumn = "%v:num %v:relnum %s %C "
 vim.opt.mouse = 'nicr'
 vim.opt.mousescroll = 'ver:5,hor:2'
 vim.opt.encoding = 'utf-8'
@@ -55,6 +44,7 @@ vim.api.nvim_set_option_value("termguicolors", true, {
 })
 
 vim.api.nvim_create_user_command('Q', 'q', {})
+
 -- Enter normal mode when certain rarely used keys are triggered
 vim.keymap.set('i', 'jj', '<esc>')
 vim.keymap.set('i', 'jk', '<esc>')
@@ -78,43 +68,16 @@ vim.keymap.set('n', '<space>l', ':tabp<CR>')
 vim.keymap.set('n', ',c', ':set cc=<CR>')
 vim.keymap.set('n', ',C', ':set cc=79<CR>')
 
--- VueJS file settings
--- vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
---   pattern = {"*.vue"},
---   command = "setlocal filetype=vue",
--- })
--- vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
---   pattern = {"*.vue"},
---   command = "setlocal expandtab", })
--- vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
---   pattern = {"*.vue"},
---   command = "setlocal tabstop=2",
--- })
--- vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
---   pattern = {"*.vue"},
---   command = "setlocal softtabstop=2",
--- })
--- vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
---   pattern = {"*.vue"},
---   command = "setlocal shiftwidth=2",
--- })
-
 vim.api.nvim_create_autocmd({"BufNewFile", "BufRead", "BufEnter", "BufWinEnter", }, {
     pattern = {"*.blade.php"},
     command = "set filetype=blade",
 })
-
--- augroup BladeFiltypeRelated
---   au BufNewFile,BufRead *.blade.php set ft=blade
--- augroup END
-
 
 vim.g.mapleader = "<Space>"
 vim.g.maplocalleader = "<Space>"
 
 -- Start lazy nvim 
 require("lazy").setup("plugins")
-
 
 -- we can use 'ca' to expand an abbr in command mode
 -- or we could use 'ia' to expand an abbr in insert mode
@@ -123,8 +86,6 @@ vim.keymap.set('ia', 'lgi', "logging.info(f'')<ESC>F';a")
 vim.keymap.set('ia', 'hml', "hm_log(f'')<ESC>F';a")
 vim.keymap.set('ia', 'importhm', "from helpers.logging_helper import hm_log<ESC>")
 vim.keymap.set('ia', 'bdr', "border: 1px solid red;<ESC>")
-
-
 
 -- blade files treesitter
 local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
