@@ -13,9 +13,10 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 
-local colorscheme = "kanagawabones"
-local ok, _ = pcall(vim.cmd, "colorscheme " .. colorscheme)
-vim.o.background = "dark" -- or "light" for light mode
+-- local colorscheme = "kanagawabones"
+-- local ok, _ = pcall(vim.cmd, "colorscheme " .. colorscheme)
+-- vim.o.background = "dark" -- or "light" for light mode
+-- vim.o.background = "light" -- for light mode
 
 -- Custom nvim settings
 vim.opt.number = true
@@ -36,8 +37,10 @@ vim.opt.smartcase = true
 vim.opt.foldcolumn = '1'
 vim.opt.colorcolumn = '79'
 vim.opt.cursorline = true
+vim.opt.signcolumn = 'yes'
 vim.api.nvim_set_hl(0, 'CursorLine', { bg = '#3c3836' })
 vim.api.nvim_set_hl(0, 'WinSeparator', { fg = '#000000' })
+vim.api.nvim_set_hl(0, 'PmenuSel', { fg = '#000000' })
 vim.o.cursorlineopt ='both'
 vim.api.nvim_set_option_value("termguicolors", true, {
     scope = "local",
@@ -130,3 +133,9 @@ vim.opt.timeoutlen = 2000
 vim.g.loaded_perl_provider = 0
 require('render-markdown').setup({ latex = { enabled = false } })
 vim.api.nvim_set_hl(0, 'ColorColumn', { bg = none, fg = '#612f33' })
+
+-- this cleans html tags
+-- awk 'BEGIN {RS="<[^>]+>"} {gsub(/[\t\n ]+/, " "); print}'
+-- vim.api.nvim_set_keymap('v', '<leader>s', '"<ESC>:luarequire("strip_html_tags").run()"<CR>', { noremap = true })
+--
+
