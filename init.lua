@@ -37,11 +37,15 @@ vim.opt.smartcase = true
 vim.opt.foldcolumn = '1'
 vim.opt.colorcolumn = '79'
 vim.opt.cursorline = true
+vim.o.cursorlineopt ='both'
 vim.opt.signcolumn = 'yes'
 vim.api.nvim_set_hl(0, 'CursorLine', { bg = '#3c3836' })
 vim.api.nvim_set_hl(0, 'WinSeparator', { fg = '#000000' })
 vim.api.nvim_set_hl(0, 'PmenuSel', { fg = '#000000' })
-vim.o.cursorlineopt ='both'
+
+vim.g.virtcolumn_char = '∙' -- char to display the line
+vim.g.virtcolumn_priority = 10 -- priority of extmark
+
 vim.api.nvim_set_option_value("termguicolors", true, {
     scope = "local",
 })
@@ -55,12 +59,6 @@ vim.keymap.set('i', 'kk', '<esc>')
 
 -- Remove search highlights
 vim.keymap.set('n', ',<space>', ':nohlsearch<CR>')
-
--- Cycle buffers by space + arrow
-vim.keymap.set('n', '<Space><Up>', ':bp<CR>')
-vim.keymap.set('n', '<Space><Down>', ':bn<CR>')
-vim.keymap.set('n', '<Space><Right>', ':tabn<CR>')
-vim.keymap.set('n', '<Space><Left>', ':tabp<CR>')
 
 -- Cycle buffers by space + nav keys
 vim.keymap.set('n', '<space>j', ':bp<CR>')
