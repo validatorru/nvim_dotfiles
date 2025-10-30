@@ -46,11 +46,11 @@ return {
                     '%=', -- empty
                 },
                 lualine_x = {
-                        "aerial",
+                    "aerial",
                     -- '%=', -- empty
                 },
                 lualine_y = {
-                        'location',
+                    'location',
                 },
                 lualine_z = {
                     {
@@ -85,13 +85,25 @@ return {
                         'tabs',
                         mode = 2,
                         separator = { left = '', right = '' },
+                        symbols = {
+                            modified = ' ●',      -- Text to show when the buffer is modified
+                            alternate_file = '#', -- Text to show to identify the alternate file
+                            directory =  '',     -- Text to show when the buffer is a directory
+                        },
+                        use_mode_colors = true,
+                        tabs_color = {
+                            -- Same values as the general color option can be used here.
+                            active = { fg = '#333333', bg = '#eeeeee', gui = 'bold' },
+                            -- active = 'lualine_{section}_normal',     -- Color for active tab.
+                            -- inactive = 'lualine_{section}_inactive', -- Color for inactive tab.
+                        },
                     }
                 },
                 lualine_b = {},
                 lualine_c = {},
                 lualine_x = {},
                 lualine_y = {
-                        get_status_icon,
+                    get_status_icon,
                 },
                 lualine_z = {
                     {
