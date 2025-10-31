@@ -5,10 +5,8 @@ return {
     priority = 1000,
     enabled = (jit.os ~= "MacOS"),
     config = function()
-        vim.cmd.colorscheme('zenbones')
-        -- vim.cmd.colorscheme('zenwritten')
-        -- vim.cmd.colorscheme('neobones')
-        darkness = 'stark'
+        -- vim.cmd.colorscheme('zenbones')
+        vim.cmd.colorscheme('zenwritten')
         transparent_background = true
     end
 }
