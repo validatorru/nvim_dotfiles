@@ -19,29 +19,27 @@ vim.opt.rtp:prepend(lazypath)
 -- vim.o.background = "light" -- for light mode
 
 -- Custom nvim settings
-vim.opt.number = true
-vim.opt.rnu = true
-vim.opt.mouse = 'nicr'
-vim.opt.mousescroll = 'ver:5,hor:2'
-vim.opt.encoding = 'utf-8'
-vim.opt.swapfile = false
-vim.opt.scrolloff = 1
-vim.opt.tabstop = 4
-vim.opt.softtabstop = 4
-vim.opt.shiftwidth = 4
-vim.opt.expandtab = true
-vim.opt.autoindent = true
-vim.opt.fileformat = unix
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
-vim.opt.foldcolumn = '1'
-vim.opt.colorcolumn = '79'
-vim.opt.cursorline = true
+vim.o.number = true
+vim.o.rnu = true
+vim.o.mouse = 'nicr'
+vim.o.mousescroll = 'ver:5,hor:2'
+vim.o.encoding = 'utf-8'
+vim.o.swapfile = false
+vim.o.scrolloff = 1
+vim.o.tabstop = 4
+vim.o.softtabstop = 4
+vim.o.shiftwidth = 4
+vim.o.expandtab = true
+vim.o.autoindent = true
+vim.o.fileformat = unix
+vim.o.ignorecase = true
+vim.o.smartcase = true
+vim.o.foldcolumn = '1'
+vim.o.colorcolumn = '79'
+vim.o.cursorline = true
 vim.o.cursorlineopt ='both'
-vim.opt.signcolumn = 'yes'
-vim.api.nvim_set_hl(0, 'CursorLine', { bg = '#3c3836' })
-vim.api.nvim_set_hl(0, 'WinSeparator', { fg = '#000000' })
-vim.api.nvim_set_hl(0, 'PmenuSel', { fg = '#000000' })
+vim.o.signcolumn = 'yes'
+
 
 vim.g.virtcolumn_char = '∙' -- char to display the line
 vim.g.virtcolumn_priority = 10 -- priority of extmark
@@ -50,7 +48,16 @@ vim.api.nvim_set_option_value("termguicolors", true, {
     scope = "local",
 })
 
+vim.api.nvim_set_hl(0, 'CursorLine', { bg = '#3c3836' })
+vim.api.nvim_set_hl(0, 'WinSeparator', { fg = '#000000' })
+vim.api.nvim_set_hl(0, 'PmenuSel', { fg = '#000000' })
+
 vim.api.nvim_create_user_command('Q', 'q', {})
+
+vim.api.nvim_create_autocmd({"BufNewFile", "BufRead", "BufEnter", "BufWinEnter", }, {
+    pattern = {"*.blade.php"},
+    command = "set filetype=blade",
+})
 
 -- Enter normal mode when certain rarely used keys are triggered
 vim.keymap.set('i', 'jj', '<esc>')
@@ -69,10 +76,6 @@ vim.keymap.set('n', '<space>l', ':tabp<CR>')
 vim.keymap.set('n', ',c', ':set cc=<CR>')
 vim.keymap.set('n', ',C', ':set cc=79<CR>')
 
-vim.api.nvim_create_autocmd({"BufNewFile", "BufRead", "BufEnter", "BufWinEnter", }, {
-    pattern = {"*.blade.php"},
-    command = "set filetype=blade",
-})
 
 vim.g.mapleader = "<Space>"
 vim.g.maplocalleader = "<Space>"
