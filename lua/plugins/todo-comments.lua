@@ -23,7 +23,15 @@ return {
         HACK = {},
         WARN = {},
         PERF = {},
-        NOTE = {},
+        NOTE = {
+            alt = {
+                "Memo",
+                "Info",
+                "NB",
+                "Note",
+                "note"
+            },
+        },
         TEST = {},
     }
 }
