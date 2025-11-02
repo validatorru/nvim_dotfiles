@@ -41,7 +41,8 @@ vim.o.cursorlineopt ='both'
 vim.o.signcolumn = 'yes'
 
 
-vim.g.virtcolumn_char = '∙' -- char to display the line
+-- vim.g.virtcolumn_char = '∙' -- char to display the line
+vim.g.virtcolumn_char = '𐩑' -- char to display the line
 vim.g.virtcolumn_priority = 10 -- priority of extmark
 
 vim.api.nvim_set_option_value("termguicolors", true, {
@@ -119,7 +120,7 @@ vim.cmd[[
         augroup END
 ]]
 
-vim.opt.virtualedit = "block"
+vim.opt.virtualedit = "all"
 
 vim.diagnostic.config({
     virtual_lines = true
@@ -133,7 +134,55 @@ vim.opt.laststatus = 3
 vim.opt.timeoutlen = 2000
 vim.g.loaded_perl_provider = 0
 require('render-markdown').setup({ latex = { enabled = false } })
+
 vim.api.nvim_set_hl(0, 'ColorColumn', { bg = none, fg = '#612f33' })
+
+-- vim.api.nvim_set_hl(0, "FloatBorder", {bg="#3B4252", fg="#5E81AC"})
+vim.api.nvim_set_hl(0, "FloatBorder", {bg="#000000", fg="#999999"})
+vim.api.nvim_set_hl(0, "NormalFloat", {bg="#111111"})
+vim.api.nvim_set_hl(0, "TelescopeNormal", {bg="#111111"})
+vim.api.nvim_set_hl(0, "TelescopeBorder", {bg="#111111"})
+
+-- Define highlight groups for active and inactive buffers
+vim.api.nvim_set_hl(0, 'ActiveLineNr', { fg = '#777777', bg = 'NONE' })
+vim.api.nvim_set_hl(0, 'InactiveLineNr', { fg = '#2a2a2a', bg = 'NONE' })
+
+-- Function to update line number colors
+local function update_line_number_colors()
+    local current_win = vim.api.nvim_get_current_win()
+    local all_windows = vim.api.nvim_list_wins()
+    
+    for _, win in ipairs(all_windows) do
+        local buf = vim.api.nvim_win_get_buf(win)
+        local is_current_win = (win == current_win)
+        
+        if is_current_win then
+            -- Active window
+            vim.api.nvim_win_set_option(win, 'winhighlight', 'LineNr:ActiveLineNr')
+        else
+            -- Inactive window
+            vim.api.nvim_win_set_option(win, 'winhighlight', 'LineNr:InactiveLineNr')
+        end
+    end
+end
+
+-- Set up autocommands
+local group = vim.api.nvim_create_augroup('BufferLineNumbers', { clear = true })
+
+vim.api.nvim_create_autocmd({'WinEnter', 'BufEnter', 'FocusGained'}, {
+    group = group,
+    callback = update_line_number_colors
+})
+
+vim.api.nvim_create_autocmd({'WinLeave', 'BufLeave', 'FocusLost'}, {
+    group = group,
+    callback = update_line_number_colors
+})
+
+-- Initialize on startup
+vim.defer_fn(function()
+    update_line_number_colors()
+end, 100)
 
 -- this cleans html tags
 -- awk 'BEGIN {RS="<[^>]+>"} {gsub(/[\t\n ]+/, " "); print}'

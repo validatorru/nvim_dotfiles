@@ -22,7 +22,7 @@ return {
                 preview_split = "right",
                 -- preview_split = "below",
                 win_options = {
-                    winblend = 20,
+                    winblend = 2,
                 },
                 -- This is the config that will be passed to nvim_open_win.
                 -- Change values here to customize the layout

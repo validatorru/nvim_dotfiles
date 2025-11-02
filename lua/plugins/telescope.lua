@@ -1,6 +1,5 @@
 return {
     'nvim-telescope/telescope.nvim',
-    -- tag = '0.1.5',
     config = function()
         require('telescope').setup({
             defaults = {
@@ -9,6 +8,29 @@ return {
                 },
                 border = true,
                 borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" }
+            },
+            pickers = {
+                find_files = {
+                    theme = "ivy", -- or "ivy"
+                },
+                live_grep = {
+                    theme = "ivy", -- or "ivy"
+                },
+                grep_string  = {
+                    theme = "ivy", -- or "ivy"
+                },
+                oldfiles  = {
+                    theme = "ivy", -- or "ivy"
+                },
+                buffers = {
+                    theme = "ivy",
+                    sort_lastused = true,
+                    -- mappings = {
+                    --     i = {
+                    --         ["<c-d>"] = actions.delete_buffer,
+                    --     }
+                    -- }
+                },
             },
             extensions = {
                 media_files = {
@@ -32,7 +54,6 @@ return {
         local builtin = require('telescope.builtin')
         require('telescope').load_extension('media_files')
         require('telescope').load_extension('env')
-        require('telescope').load_extension('aerial')
         require("telescope").load_extension("noice")
         require('telescope').load_extension('git_diffs')
         -- Open find files 
@@ -44,11 +65,11 @@ return {
         --  Open buffers list
         vim.keymap.set('n', ',fb', builtin.buffers, {})
         -- Open tabs list
-        vim.keymap.set('n', ',ft', ':Telescope telescope-tabs list_tabs <CR>', {})
+        vim.keymap.set('n', ',ft', ':Telescope telescope-tabs list_tabs theme=ivy <CR>', {})
         -- Open media files
         vim.keymap.set('n', ',fm', ':Telescope media_files <CR>', {})
         -- Open symbols list
-        vim.keymap.set('n', ',fa', ':Telescope aerial <CR>', {})
+        vim.keymap.set('n', ',fa', ':Telescope aerial theme=ivy <CR>', {})
         -- vim.keymap.set('n', ',fa', ':Telescope aerial <CR>', {})
         vim.keymap.set('n', ',fm', builtin.marks, {})
 
