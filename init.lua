@@ -135,8 +135,7 @@ vim.api.nvim_set_hl(0, 'ColorColumn', { bg = none, fg = '#612f33' })
 -- vim.api.nvim_set_hl(0, "FloatBorder", {bg="#3B4252", fg="#5E81AC"})
 vim.api.nvim_set_hl(0, "FloatBorder", {bg="#1e222a", fg="#999999"})
 vim.api.nvim_set_hl(0, "NormalFloat", {bg="#1a1a1a", fg="#999999"})
-vim.api.nvim_set_hl(0, "TelescopeNormal", {bg="#111111"})
-vim.api.nvim_set_hl(0, "TelescopeBorder", {bg="#111111"})
+
 
 -- Define highlight groups for active and inactive buffers
 vim.api.nvim_set_hl(0, 'ActiveLineNr', { fg = '#777777', bg = 'NONE' })
@@ -180,8 +179,7 @@ vim.defer_fn(function()
 end, 100)
 
 
+
 -- this cleans html tags
 -- awk 'BEGIN {RS="<[^>]+>"} {gsub(/[\t\n ]+/, " "); print}'
 -- vim.api.nvim_set_keymap('v', '<leader>s', '"<ESC>:luarequire("strip_html_tags").run()"<CR>', { noremap = true })
---
-
