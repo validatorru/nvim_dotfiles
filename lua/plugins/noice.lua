@@ -11,6 +11,7 @@ return {
     },
 
     config = function()
+        
         require("noice").setup({
             views = {
                 cmdline_popup = {
@@ -27,8 +28,10 @@ return {
                         padding = { 1, 2 },
                     },
                     win_options = {
-                        winhighlight = "NormalFloat:NormalFloat,FloatBorder:FloatBorder",
+                        winhighlight = "NormalFloat:NoiceCmdlinePopup,FloatBorder:FloatBorder",
+                        winblend = 0,
                     },
+                    style = "minimal",
                 },
                 popupmenu = {
                     enabled = true,
@@ -47,7 +50,7 @@ return {
                         padding = { 1, 2 },
                     },
                     win_options = {
-                        winhighlight = "NormalFloat:NormalFloat,FloatBorder:FloatBorder",
+                        winhighlight = "NormalFloat:NoiceCmdlinePopup,FloatBorder:FloatBorder",
                     },
                 },
             },
@@ -151,6 +154,14 @@ return {
                 -- lsp_doc_border = true, -- add a border to hover docs and signature help
             },
         })
+
+         -- Override after Noice is loaded
+        vim.defer_fn(function()
+            vim.api.nvim_set_hl(0, "NoiceCmdlinePopup", { bg = "#2a2a2a" })
+            -- Force refresh all windows
+            vim.cmd("redraw!")
+        end, 500)
+
         vim.keymap.set({ "n", "i", "s" }, "<c-f>", function()
             if not require("noice.lsp").scroll(4) then
                 return "<c-f>"
