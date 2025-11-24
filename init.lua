@@ -1,3 +1,7 @@
+-- Set leader keys at the VERY TOP - before any other config
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
 -- Enable lazy nvim plugin manager
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -26,7 +30,7 @@ vim.o.softtabstop = 4
 vim.o.shiftwidth = 4
 vim.o.expandtab = true
 vim.o.autoindent = true
-vim.o.fileformat = unix
+vim.o.fileformat = 'unix'  -- Fixed: added quotes
 vim.o.ignorecase = true
 vim.o.smartcase = true
 vim.o.foldcolumn = '1'
@@ -34,7 +38,6 @@ vim.o.colorcolumn = '79'
 vim.o.cursorline = true
 vim.o.cursorlineopt ='both'
 vim.o.signcolumn = 'yes'
-
 
 -- vim.g.virtcolumn_char = '∙' -- char to display the line
 vim.g.virtcolumn_char = '𐩑' -- char to display the line
@@ -50,10 +53,12 @@ vim.api.nvim_set_hl(0, 'PmenuSel', { fg = '#000000' })
 
 vim.api.nvim_create_user_command('Q', 'q', {})
 
-vim.api.nvim_create_autocmd({"BufNewFile", "BufRead", "BufEnter", "BufWinEnter", }, {
-    pattern = {"*.blade.php"},
-    command = "set filetype=blade",
-})
+vim.api.nvim_create_autocmd(
+    {"BufNewFile", "BufRead", "BufEnter", "BufWinEnter", },
+    {
+        pattern = {"*.blade.php"},
+        command = "set filetype=blade",
+    })
 
 -- Enter normal mode when certain rarely used keys are triggered
 vim.keymap.set('i', 'jj', '<esc>')
@@ -71,10 +76,6 @@ vim.keymap.set('n', '<space>l', ':tabp<CR>')
 
 vim.keymap.set('n', ',c', ':set cc=<CR>')
 vim.keymap.set('n', ',C', ':set cc=79<CR>')
-
-
-vim.g.mapleader = "<Space>"
-vim.g.maplocalleader = "<Space>"
 
 -- Start lazy nvim 
 require("lazy").setup("plugins")
@@ -130,7 +131,7 @@ vim.opt.timeoutlen = 2000
 vim.g.loaded_perl_provider = 0
 require('render-markdown').setup({ latex = { enabled = false } })
 
-vim.api.nvim_set_hl(0, 'ColorColumn', { bg = none, fg = '#612f33' })
+vim.api.nvim_set_hl(0, 'ColorColumn', { bg = 'none', fg = '#612f33' })  -- Fixed: 'none' should be string
 
 -- vim.api.nvim_set_hl(0, "FloatBorder", {bg="#3B4252", fg="#5E81AC"})
 vim.api.nvim_set_hl(0, "FloatBorder", {bg="#1e222a", fg="#999999"})
@@ -145,11 +146,11 @@ vim.api.nvim_set_hl(0, 'InactiveLineNr', { fg = '#2a2a2a', bg = 'NONE' })
 local function update_line_number_colors()
     local current_win = vim.api.nvim_get_current_win()
     local all_windows = vim.api.nvim_list_wins()
-    
+
     for _, win in ipairs(all_windows) do
         local buf = vim.api.nvim_win_get_buf(win)
         local is_current_win = (win == current_win)
-        
+
         if is_current_win then
             -- Active window
             vim.api.nvim_win_set_option(win, 'winhighlight', 'LineNr:ActiveLineNr')
@@ -178,8 +179,39 @@ vim.defer_fn(function()
     update_line_number_colors()
 end, 100)
 
-
-
--- this cleans html tags
--- awk 'BEGIN {RS="<[^>]+>"} {gsub(/[\t\n ]+/, " "); print}'
--- vim.api.nvim_set_keymap('v', '<leader>s', '"<ESC>:luarequire("strip_html_tags").run()"<CR>', { noremap = true })
+-- HTML tag stripping function - ADVANCED NEWLINE PRESERVATION
+vim.keymap.set('v', ' s', function()
+    local start_pos = vim.api.nvim_buf_get_mark(0, '<')
+    local end_pos = vim.api.nvim_buf_get_mark(0, '>')
+    
+    -- Get the selected text
+    local lines = vim.api.nvim_buf_get_text(0, 
+        start_pos[1]-1, start_pos[2], end_pos[1]-1, end_pos[2], {})
+    
+    local selected_text = table.concat(lines, '\n')
+    if selected_text == '' then return end
+    
+    -- Process each line individually to preserve newlines
+    local result_lines = {}
+    for _, line in ipairs(lines) do
+        -- Strip HTML tags from this line
+        local cleaned_line = line:gsub('<[^>]+>', '')
+        -- Clean up whitespace within the line (but preserve the line itself)
+        cleaned_line = cleaned_line:gsub('[%s\t]+', ' ')
+        cleaned_line = cleaned_line:gsub('^%s*(.-)%s*$', '%1')
+        table.insert(result_lines, cleaned_line)
+    end
+    
+    -- Remove empty lines at the beginning and end if desired
+    while #result_lines > 0 and result_lines[1] == '' do
+        table.remove(result_lines, 1)
+    end
+    while #result_lines > 0 and result_lines[#result_lines] == '' do
+        table.remove(result_lines, #result_lines)
+    end
+    
+    -- Replace the selected text
+    vim.api.nvim_buf_set_text(0, 
+        start_pos[1]-1, start_pos[2], end_pos[1]-1, end_pos[2], 
+        result_lines)
+end, { noremap = true, silent = true, desc = "Strip HTML tags (keep newlines)" })
