@@ -70,6 +70,12 @@ return {
                         globalPlugins = {
                             vue_plugin,
                         },
+                        experimental = {
+                            completion = {
+                                enableServerSideFuzzyMatch = true,
+                                entriesLimit = 20,
+                            },
+                        },
                     },
                 },
             },
@@ -86,7 +92,8 @@ return {
         }
         
         -- vim.lsp.config.ts_ls.setup(ts_ls_config)
-        vim.lsp.enable('ts_ls', ts_ls_config)
+        -- vim.lsp.enable('ts_ls', ts_ls_config)
+        vim.lsp.enable('vtsls', vtsls_config)
         vim.lsp.enable('vue_ls', vtsls_config)
 
         -- If you are on most recent `nvim-lspconfig`

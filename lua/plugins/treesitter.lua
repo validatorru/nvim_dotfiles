@@ -31,7 +31,13 @@ return {
     },
     ---@type TSConfig
     opts = {
-        highlight = { enable = true },
+        highlight = {
+            enable = true,
+            additional_vim_regex_highlighting = false,
+            disable = function(_, bufnr)
+                -- Return true if the buffer is a minified file or if its size is too large.
+            end,
+        },
         indent = { enable = true },
         ensure_installed = {
             "bash",
