@@ -177,6 +177,7 @@ vim.api.nvim_create_autocmd({'WinLeave', 'BufLeave', 'FocusLost'}, {
 -- Initialize on startup
 vim.defer_fn(function()
     update_line_number_colors()
+    vim.api.nvim_set_hl(0, 'Normal', { bg = '#010101' })
 end, 100)
 
 -- HTML tag stripping function - ADVANCED NEWLINE PRESERVATION
