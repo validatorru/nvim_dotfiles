@@ -67,7 +67,10 @@ return
             -- horizontal = "╌",
             -- vertical = "┊",
             vertical = "│",
-            arrow = ">",
+            -- arrow = ">",
+            arrow = "●",
+            -- arrow = "⏵",
+            -- arrow = "⏵",
         },
     },
     -- filter for buffers to enable indent guides
