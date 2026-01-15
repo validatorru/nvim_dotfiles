@@ -18,7 +18,27 @@ return {
             enabled = true,
             timeout = 3000,
         },
-        picker = { enabled = false },
+        picker = {
+            enabled = true,
+            layout = {
+                layout = {
+                    box = "vertical",
+                    backdrop = true,
+                    row = -1,
+                    width = 0,
+                    height = 0.4,
+                    border = "top",
+                    title = " {title} {live} {flags}",
+                    title_pos = "left",
+                    { win = "input", height = 1, border = "none" },
+                    {
+                        box = "horizontal",
+                        { win = "list", border = "none" },
+                        { win = "preview", title = "{preview}", width = 0.6, border = "none" },
+                    },
+                },
+            },
+        },
         quickfile = { enabled = true },
         scope = scope_config,
         scroll = scroll_config,
@@ -64,7 +84,7 @@ return {
                 Snacks.toggle.option("conceallevel", { off = 0, on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2 }):map("<leader>uc")
                 Snacks.toggle.treesitter():map("<leader>uT")
                 -- Snacks.toggle.option("background", { off = "light", on = "dark", name = "Dark Background" }):map("<leader>ub")
-                -- Snacks.toggle.inlay_hints():map("<leader>uh")
+                Snacks.toggle.inlay_hints():map("<leader>uh")
                 Snacks.toggle.indent():map("<leader>ug")
                 Snacks.toggle.dim():map("<leader>uD")
             end,
