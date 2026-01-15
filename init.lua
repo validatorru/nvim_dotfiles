@@ -294,3 +294,5 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 vim.opt.synmaxcol = 500
+
+vim.api.nvim_set_hl(0, "SnacksPickerTitle", { fg = "#ff0000", bg = "#000000" })
