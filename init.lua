@@ -10,7 +10,7 @@ if not vim.loop.fs_stat(lazypath) then
         "clone",
         "--filter=blob:none",
         "https://github.com/folke/lazy.nvim.git",
-        "--branch=stable", -- latest stable release
+        "--branch=stable",
         lazypath,
     })
 end
@@ -30,7 +30,7 @@ vim.o.softtabstop = 4
 vim.o.shiftwidth = 4
 vim.o.expandtab = true
 vim.o.autoindent = true
-vim.o.fileformat = 'unix'  -- Fixed: added quotes
+vim.o.fileformat = 'unix'
 vim.o.ignorecase = true
 vim.o.smartcase = true
 vim.o.foldcolumn = '1'
@@ -39,9 +39,8 @@ vim.o.cursorline = true
 vim.o.cursorlineopt ='both'
 vim.o.signcolumn = 'yes'
 
--- vim.g.virtcolumn_char = '∙' -- char to display the line
-vim.g.virtcolumn_char = '𐩑' -- char to display the line
-vim.g.virtcolumn_priority = 10 -- priority of extmark
+vim.g.virtcolumn_char = '𐩑'
+vim.g.virtcolumn_priority = 10 
 
 vim.api.nvim_set_option_value("termguicolors", true, {
     scope = "local",
@@ -84,20 +83,6 @@ require("lazy").setup("plugins")
 -- or we could use 'ia' to expand an abbr in insert mode
 vim.keymap.set('ia', 'clls', "console.log('')<ESC>F';a")
 vim.keymap.set('ia', 'lgi', "logging.info(f'')<ESC>F';a")
-vim.keymap.set('ia', 'hml', "hm_log(f'')<ESC>F';a")
-vim.keymap.set('ia', 'importhm', "from helpers.logging_helper import hm_log<ESC>")
-vim.keymap.set('ia', 'bdr', "border: 1px solid red;<ESC>")
-
--- blade files treesitter
-local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
-parser_config.blade = {
-    install_info = {
-        url = "https://github.com/EmranMR/tree-sitter-blade",
-        files = {"src/parser.c"},
-        branch = "main",
-    },
-    filetype = "blade"
-}
 
 local augroup = vim.api.nvim_create_augroup   -- Create/get autocommand group
 local autocmd = vim.api.nvim_create_autocmd
@@ -112,10 +97,10 @@ vim.filetype.add({
 vim.cmd[[
         augroup highlight_yank
         autocmd!
-        au TextYankPost * silent! lua vim.highlight.on_yank({higroup="Visual", timeout=200})
+        au TextYankPost * silent! lua vim.highlight.on_yank({ higroup="Visual", timeout=200 })
         augroup END
 ]]
-
+ 
 -- vim.opt.virtualedit = "all"
 
 vim.diagnostic.config({
@@ -133,7 +118,6 @@ require('render-markdown').setup({ latex = { enabled = false } })
 
 vim.api.nvim_set_hl(0, 'ColorColumn', { bg = 'none', fg = '#612f33' })  -- Fixed: 'none' should be string
 
--- vim.api.nvim_set_hl(0, "FloatBorder", {bg="#3B4252", fg="#5E81AC"})
 vim.api.nvim_set_hl(0, "FloatBorder", {bg="#1e222a", fg="#999999"})
 vim.api.nvim_set_hl(0, "NormalFloat", {bg="#1a1a1a", fg="#999999"})
 
