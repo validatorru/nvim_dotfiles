@@ -71,7 +71,7 @@ return {
             'javascript',
             'javascriptreact',
             'typescriptreact',
-            'vue'
+            'vue',
         }
         local vue_plugin = {
             name = '@vue/typescript-plugin',
@@ -87,7 +87,7 @@ return {
                 'javascriptreact',
                 'typescriptreact',
                 'vue',
-                'html.vue'
+                'html.vue',
             },
             settings = {
                 vtsls = {
@@ -142,6 +142,8 @@ return {
         --         }
         --     }
         -- })
+
+        vim.lsp.enable('pyright')
 
 
 
