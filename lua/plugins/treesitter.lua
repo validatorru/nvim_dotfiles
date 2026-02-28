@@ -7,7 +7,6 @@ local parsers = {
     'cpp',
     'css',
     'csv',
-    'dap_repl',
     'devicetree',
     'diff',
     'ebnf',
@@ -85,9 +84,6 @@ return {
       -- map('n', '<leader>it', vim.treesitter.inspect_tree)
       -- map('n', '<leader>i', vim.show_pos)
     end,
-    dependencies = {
-      'LiadOz/nvim-dap-repl-highlights',
-    },
   },
   {
     'nvim-treesitter/nvim-treesitter-context',
