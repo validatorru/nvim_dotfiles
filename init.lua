@@ -96,6 +96,7 @@
         virtual_lines = true
     })
 
+vim.g.python3_host_prog = '/Users/alexbalaboshko/.config/nvim/venv/bin/python'
 
 vim.g.loaded_ruby_provider = 0
 
