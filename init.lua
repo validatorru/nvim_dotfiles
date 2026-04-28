@@ -1,100 +1,105 @@
-    -- Set leader keys at the VERY TOP - before any other config
-    vim.g.mapleader = " "
-    vim.g.maplocalleader = " "
+--
+-- Set leader keys at the VERY TOP - before any other config
+-- Leader is <space>
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
-    -- Enable lazy nvim plugin manager
-    local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-    if not vim.loop.fs_stat(lazypath) then
-        vim.fn.system({
-            "git",
-            "clone",
-            "--filter=blob:none",
-            "https://github.com/folke/lazy.nvim.git",
-            "--branch=stable",
-            lazypath,
-        })
-    end
+-- Initialize on startup
+vim.defer_fn(function()
+    update_line_number_colors()
+    vim.api.nvim_set_hl(0, 'Normal', { bg = '#010101' })
+    vim.cmd('syntax on')
+end, 100)
 
-    vim.opt.rtp:prepend(lazypath)
-
-    -- Custom nvim settings
-    vim.o.number = true
-    vim.o.rnu = true
-    vim.o.mouse = 'nicr'
-    vim.o.mousescroll = 'ver:5,hor:2'
-    vim.o.encoding = 'utf-8'
-    vim.o.swapfile = false
-    vim.o.scrolloff = 1
-    vim.o.tabstop = 4
-    vim.o.softtabstop = 4
-    vim.o.shiftwidth = 4
-    vim.o.expandtab = true
-    vim.o.autoindent = true
-    vim.o.fileformat = 'unix'
-    vim.o.ignorecase = true
-    vim.o.smartcase = true
-    vim.o.foldcolumn = '1'
-    vim.o.colorcolumn = '79'
-    vim.o.cursorline = true
-    vim.o.cursorlineopt ='both'
-    vim.o.signcolumn = 'yes'
-
-    vim.g.virtcolumn_char = '𐩑'
-    vim.g.virtcolumn_priority = 10 
-
-    vim.api.nvim_set_option_value("termguicolors", true, {
-        scope = "local",
+-- Enable lazy nvim plugin manager
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.uv.fs_stat(lazypath) then
+    vim.fn.system({
+        "git",
+        "clone",
+        "--filter=blob:none",
+        "https://github.com/folke/lazy.nvim.git",
+        "--branch=stable",
+        lazypath,
     })
+end
 
-    vim.api.nvim_set_hl(0, 'CursorLine', { bg = '#3c3836' })
-    vim.api.nvim_set_hl(0, 'WinSeparator', { fg = '#000000' })
-    vim.api.nvim_set_hl(0, 'PmenuSel', { fg = '#000000' })
+vim.opt.rtp:prepend(lazypath)
 
-    vim.api.nvim_create_user_command('Q', 'q', {})
+-- Custom nvim settings
+vim.o.number = true
+vim.o.rnu = true
+vim.o.mouse = 'nicr'
+vim.o.mousescroll = 'ver:3,hor:2'
+vim.o.encoding = 'utf-8'
+vim.o.swapfile = false
+vim.o.scrolloff = 1
+vim.o.tabstop = 4
+vim.o.softtabstop = 4
+vim.o.shiftwidth = 4
+vim.o.expandtab = true
+vim.o.autoindent = true
+vim.o.fileformat = 'unix'
+vim.o.ignorecase = true
+vim.o.smartcase = true
+vim.o.foldcolumn = '1'
+vim.o.colorcolumn = '79'
+vim.o.cursorline = true
+vim.o.cursorlineopt ='both'
+vim.o.signcolumn = 'yes'
 
-    -- Enter normal mode when certain rarely used keys are triggered
-    vim.keymap.set('i', 'jj', '<esc>')
-    vim.keymap.set('i', 'jk', '<esc>')
-    vim.keymap.set('i', 'kk', '<esc>')
+vim.o.termguicolors = true
 
-    -- Remove search highlights
-    vim.keymap.set('n', ',<space>', ':nohlsearch<CR>')
+vim.api.nvim_set_hl(0, 'CursorLine', { bg = '#3c3836' })
+vim.api.nvim_set_hl(0, 'WinSeparator', { fg = '#000000' })
+vim.api.nvim_set_hl(0, 'PmenuSel', { fg = '#000000' })
 
-    -- Cycle buffers by space + nav keys
-    vim.keymap.set('n', '<space>j', ':bp<CR>')
-    vim.keymap.set('n', '<space>k', ':bn<CR>')
-    vim.keymap.set('n', '<space>h', ':tabn<CR>')
-    vim.keymap.set('n', '<space>l', ':tabp<CR>')
+vim.api.nvim_create_user_command('Q', 'q', {})
 
-    vim.keymap.set('n', ',c', ':set cc=<CR>')
-    vim.keymap.set('n', ',C', ':set cc=79<CR>')
+-- Enter normal mode when certain rarely used keys are triggered
+vim.keymap.set('i', 'jj', '<esc>')
+vim.keymap.set('i', 'jk', '<esc>')
+vim.keymap.set('i', 'kk', '<esc>')
 
-    -- Start lazy nvim 
-    require("lazy").setup("plugins")
+-- Remove search highlights
+vim.keymap.set('n', ',<space>', ':nohlsearch<CR>')
 
-    -- we can use 'ca' to expand an abbr in command mode
-    -- or we could use 'ia' to expand an abbr in insert mode
-    vim.keymap.set('ia', 'clls', "console.log('')<ESC>F';a")
-    vim.keymap.set('ia', 'lgi', "logging.info(f'')<ESC>F';a")
+-- Cycle buffers by space + nav keys
+vim.keymap.set('n', '<space>j', ':bp<CR>')
+vim.keymap.set('n', '<space>k', ':bn<CR>')
+vim.keymap.set('n', '<space>h', ':tabn<CR>')
+vim.keymap.set('n', '<space>l', ':tabp<CR>')
 
-    local augroup = vim.api.nvim_create_augroup   -- Create/get autocommand group
-    local autocmd = vim.api.nvim_create_autocmd
+-- hide color colum (virtcolumn)
+vim.keymap.set('n', ',c', ':set cc=<CR>')
+-- show color colum (virtcolumn)
+vim.keymap.set('n', ',C', ':set cc=79<CR>')
 
+-- Start lazy nvim 
+require("lazy").setup("plugins")
 
+vim.keymap.set('i', 'clls', "console.log('')<ESC>F';a", { desc = 'JS console.log snippet' })
+vim.keymap.set('i', 'lgi',  "logging.info('')<ESC>F';a",  { desc = 'Python logging snippet' })
 
-    -- highlight yanked text for 200ms using the "Visual" highlight group
-    vim.cmd[[
+local augroup = vim.api.nvim_create_augroup   -- Create/get autocommand group
+local autocmd = vim.api.nvim_create_autocmd
+
+-- highlight yanked text for 200ms using the "Visual" highlight group
+vim.cmd[[
             augroup highlight_yank
             autocmd!
-            au TextYankPost * silent! lua vim.highlight.on_yank({ higroup="Visual", timeout=200 })
+            au TextYankPost * silent! lua vim.highlight.on_yank({
+                higroup="Visual", timeout=200
+            })
             augroup END
-    ]]
-     
-    -- vim.opt.virtualedit = "all"
+]]
 
-    vim.diagnostic.config({
-        virtual_lines = true
-    })
+-- fancy editing thing, rarely used by me
+-- vim.opt.virtualedit = "all"
+
+vim.diagnostic.config({
+    virtual_lines = true
+})
 
 vim.g.python3_host_prog = '/Users/alexbalaboshko/.config/nvim/venv/bin/python'
 
@@ -104,13 +109,10 @@ vim.g.loaded_ruby_provider = 0
 vim.opt.laststatus = 3
 vim.opt.timeoutlen = 2000
 vim.g.loaded_perl_provider = 0
-require('render-markdown').setup({ latex = { enabled = false } })
 
-vim.api.nvim_set_hl(0, 'ColorColumn', { bg = 'none', fg = '#612f33' })  -- Fixed: 'none' should be string
-
+vim.api.nvim_set_hl(0, 'ColorColumn', { bg = 'none', fg = '#612f33' })
 vim.api.nvim_set_hl(0, "FloatBorder", {bg="#1e222a", fg="#999999"})
-vim.api.nvim_set_hl(0, "NormalFloat", {bg="#1a1a1a", fg="#999999"})
-
+vim.api.nvim_set_hl(0, "NormalFloat", {bg="#020202", fg="#aaaaaa"})
 
 -- Define highlight groups for active and inactive buffers
 vim.api.nvim_set_hl(0, 'ActiveLineNr', { fg = '#777777', bg = 'NONE' })
@@ -127,10 +129,18 @@ local function update_line_number_colors()
 
         if is_current_win then
             -- Active window
-            vim.api.nvim_win_set_option(win, 'winhighlight', 'LineNr:ActiveLineNr')
+            vim.api.nvim_win_set_option(
+                win,
+                'winhighlight',
+                'LineNr:ActiveLineNr'
+            )
         else
             -- Inactive window
-            vim.api.nvim_win_set_option(win, 'winhighlight', 'LineNr:InactiveLineNr')
+            vim.api.nvim_win_set_option(
+                win,
+                'winhighlight',
+                'LineNr:InactiveLineNr'
+            )
         end
     end
 end
@@ -148,25 +158,20 @@ vim.api.nvim_create_autocmd({'WinLeave', 'BufLeave', 'FocusLost'}, {
     callback = update_line_number_colors
 })
 
--- Initialize on startup
-vim.defer_fn(function()
-    update_line_number_colors()
-    vim.api.nvim_set_hl(0, 'Normal', { bg = '#010101' })
-    vim.cmd('syntax on')
-end, 100)
-
 -- HTML tag stripping function - ADVANCED NEWLINE PRESERVATION
+-- you select text in visual mode, then press space+s,
+-- and html tags are gone in a moment
 vim.keymap.set('v', ' s', function()
     local start_pos = vim.api.nvim_buf_get_mark(0, '<')
     local end_pos = vim.api.nvim_buf_get_mark(0, '>')
-    
+
     -- Get the selected text
     local lines = vim.api.nvim_buf_get_text(0, 
         start_pos[1]-1, start_pos[2], end_pos[1]-1, end_pos[2], {})
-    
+
     local selected_text = table.concat(lines, '\n')
     if selected_text == '' then return end
-    
+
     -- Process each line individually to preserve newlines
     local result_lines = {}
     for _, line in ipairs(lines) do
@@ -177,7 +182,7 @@ vim.keymap.set('v', ' s', function()
         cleaned_line = cleaned_line:gsub('^%s*(.-)%s*$', '%1')
         table.insert(result_lines, cleaned_line)
     end
-    
+
     -- Remove empty lines at the beginning and end if desired
     while #result_lines > 0 and result_lines[1] == '' do
         table.remove(result_lines, 1)
@@ -185,7 +190,7 @@ vim.keymap.set('v', ' s', function()
     while #result_lines > 0 and result_lines[#result_lines] == '' do
         table.remove(result_lines, #result_lines)
     end
-    
+
     -- Replace the selected text
     vim.api.nvim_buf_set_text(0, 
         start_pos[1]-1, start_pos[2], end_pos[1]-1, end_pos[2], 
@@ -223,6 +228,9 @@ local function is_terminal_running(term)
     return channel and vim.fn.jobwait({channel}, 0)[1] == -1
 end
 
+-- Scooter is an exernal CLI search and replace utility
+-- It integrates in nvim rather nicely,
+-- The biggest problem with it is that I forget to use it
 local function open_scooter()
     if is_terminal_running(scooter_term) then
         scooter_term:toggle()
@@ -254,39 +262,6 @@ vim.keymap.set('v', '<leader>r',
     end,
     { desc = 'Search selected text in scooter' })
 
-
-
-
--- performance
-vim.o.lazyredraw = true
-vim.cmd.syntax("manual")
-
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "gitsendemail", "conf", "editorconfig", "qf", "checkhealth", "less" },
-  callback = function(event)
-    vim.bo[event.buf].syntax = vim.bo[event.buf].filetype
-  end,
-})
-
 vim.opt.synmaxcol = 500
 
 vim.api.nvim_set_hl(0, "SnacksPickerTitle", { fg = "#ff0000", bg = "#000000" })
-
-vim.filetype.add({
-    pattern = {
-        ['.*%.blade%.php'] = 'blade',
-    },
-})
-
--- vim.api.nvim_create_autocmd(
---     {"BufNewFile", "BufRead", "BufEnter", "BufWinEnter", },
---     {
---         pattern = {"*.blade.php"},
---         -- command = "set filetype=blade",
---         command = "set filetype=html",
---     })
-
--- vim.api.nvim_create_autocmd('FileType', {
---   pattern = { "*.blade.php" },
---   callback = function() vim.treesitter.start() end,
--- })
