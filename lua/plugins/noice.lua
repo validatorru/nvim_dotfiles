@@ -20,7 +20,7 @@ return {
                         col = "50%",
                     },
                     size = {
-                        width = "80",
+                        width = 80,
                         height = "auto",
                     },
                     border = {
@@ -42,7 +42,7 @@ return {
                         col = "50%",
                     },
                     size = {
-                        width = '84',
+                        width = 84,
                         height = 10,
                     },
                     border = {
@@ -157,21 +157,23 @@ return {
 
          -- Override after Noice is loaded
         vim.defer_fn(function()
-            vim.api.nvim_set_hl(0, "NoiceCmdlinePopup", { bg = "#2a2a2a" })
+            -- vim.api.nvim_set_hl(0, "NoiceCmdlinePopup", { bg = "#2a2a2a" })
+            vim.api.nvim_set_hl(0, "NoiceCmdlinePopup", { bg = "#0f0f0f" })
             -- Force refresh all windows
             vim.cmd("redraw!")
         end, 500)
 
         vim.keymap.set({ "n", "i", "s" }, "<c-f>", function()
-            if not require("noice.lsp").scroll(4) then
+            if not require("noice").lsp.scroll(2) then
                 return "<c-f>"
             end
         end, { silent = true, expr = true })
 
         vim.keymap.set({ "n", "i", "s" }, "<c-b>", function()
-            if not require("noice.lsp").scroll(-4) then
+            if not require("noice").lsp.scroll(-2) then
                 return "<c-b>"
             end
         end, { silent = true, expr = true })
+
     end,
 }

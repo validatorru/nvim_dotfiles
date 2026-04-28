@@ -53,66 +53,46 @@ local parsers = {
 
 ---@type LazySpec
 return {
-  {
-    'nvim-treesitter/nvim-treesitter',
-    lazy = false,
-    branch = 'main',
-    build = ':TSUpdate',
-    opts = {},
-    config = function(_, opts)
-      local nts = require('nvim-treesitter')
-
-      vim.api.nvim_create_autocmd('FileType', {
-        pattern = parsers,
-        callback = function()
-          vim.treesitter.start()
-          vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
-          vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+    {
+        'nvim-treesitter/nvim-treesitter',
+        lazy = false,
+        branch = 'main',
+        build = ':TSUpdate',
+        opts = {},
+        config = function(_, opts)
+            local nts = require('nvim-treesitter')
+            nts.setup(opts)
+            nts.install(parsers)
         end,
-      })
-
-      vim.api.nvim_create_autocmd('User', {
-        pattern = 'TSUpdate',
-        callback = function()
-          local configs = require('nvim-treesitter.parsers')
-        end,
-      })
-
-      nts.setup(opts)
-      nts.install(parsers)
-
-      -- map('n', '<leader>it', vim.treesitter.inspect_tree)
-      -- map('n', '<leader>i', vim.show_pos)
-    end,
-  },
-  {
-    'nvim-treesitter/nvim-treesitter-context',
-    opts = {},
-  },
-  {
-    'nvim-treesitter/nvim-treesitter-textobjects',
-    branch = 'main',
-    opts = {
-      select = {
-        lookahead = true,
-        keymaps = {
-          ['if'] = '@function.inner',
-          ['af'] = '@function.outer',
-          ['ic'] = '@class.inner',
-          ['ac'] = '@class.outer',
-          ['il'] = '@loop.inner',
-          ['al'] = '@loop.outer',
-          ['ia'] = '@parameter.inner',
-          ['aa'] = '@parameter.outer',
+    },
+    {
+        'nvim-treesitter/nvim-treesitter-context',
+        opts = {},
+    },
+    {
+        'nvim-treesitter/nvim-treesitter-textobjects',
+        branch = 'main',
+        opts = {
+            select = {
+                lookahead = true,
+                keymaps = {
+                    ['if'] = '@function.inner',
+                    ['af'] = '@function.outer',
+                    ['ic'] = '@class.inner',
+                    ['ac'] = '@class.outer',
+                    ['il'] = '@loop.inner',
+                    ['al'] = '@loop.outer',
+                    ['ia'] = '@parameter.inner',
+                    ['aa'] = '@parameter.outer',
+                },
+            },
         },
-      },
     },
-  },
-  {
-    'windwp/nvim-ts-autotag',
-    enabled = false, -- this breaks dot repeating with `>`
-    opts = {
-      enable_close_on_slash = true,
+    {
+        'windwp/nvim-ts-autotag',
+        enabled = false, -- this breaks dot repeating with `>`
+        opts = {
+            enable_close_on_slash = true,
+        },
     },
-  },
 }
