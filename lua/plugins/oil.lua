@@ -74,9 +74,7 @@ return {
                 },
             },
         })
-        -- vim.keymap.set("n", "-", require("oil").open, { desc = "Open parent directory" })
         vim.keymap.set("n", ",-", require("oil").open, { desc = "Open parent directory" })
-        -- vim.keymap.set('n', ',-', ':Oil --float <CR>', {})
         vim.keymap.set('n', '-', ':Oil --float <CR>', {})
     end,
     -- Optional dependencies

@@ -6,13 +6,12 @@ return {
         -- A function to check the status and return the corresponding icon
         --
         local function get_status_icon()
-            local status = require("ollama").status()
-
-            if status == "IDLE" then
-                return "-"
-            elseif status == "WORKING" then
-                return "🧠"
-            end
+            local ok, ollama = pcall(require, "ollama")
+            if not ok then return "" end
+            local status = ollama.status()
+            if status == "IDLE" then return "-"
+            elseif status == "WORKING" then return "🧠"
+            else return "" end
         end
 
         require('lualine').setup {
@@ -115,6 +114,6 @@ return {
             extensions = {},
         }
     end,
-    dependencies = { 'nvim-web-devicons' }
+    dependencies = { "nvim-tree/nvim-web-devicons" }
 }
 

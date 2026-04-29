@@ -23,7 +23,7 @@ return {
                 injections = true, -- include language injections when detecting scope (useful for languages like `vue`)
                 ---@type string[]|{enabled?:boolean}
                 blocks = {
-                    enabled = false, -- enable to use the following blocks
+                    enabled = true, -- enable to use the following blocks
                     "function_declaration",
                     "function_definition",
                     "method_declaration",

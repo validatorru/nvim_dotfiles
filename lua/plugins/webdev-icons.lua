@@ -27,12 +27,13 @@ return {
             strict = true;
             -- set the light or dark variant manually, instead of relying on `background`
             -- (default to nil)
-            variant = "light";
+            -- variant = "light";
+            -- variant = "dark";
             -- override blend value for all highlight groups :h highlight-blend.
             -- setting this value to `0` will make all icons opaque. in practice this means
             -- that icons width will not be affected by pumblend option (see issue #608)
             -- (default to nil)
-            blend = 5;
+            blend = 0;
             -- same as `override` but specifically for overrides by filename
             -- takes effect when `strict` is true
             -- override_by_filename = {

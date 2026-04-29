@@ -77,6 +77,7 @@ vim.keymap.set('n', ',C', ':set cc=79<CR>')
 
 -- Start lazy nvim 
 require("lazy").setup("plugins")
+require('vim._core.ui2').enable()
 
 vim.keymap.set('i', 'clls', "console.log('')<ESC>F';a", { desc = 'JS console.log snippet' })
 vim.keymap.set('i', 'lgi',  "logging.info('')<ESC>F';a",  { desc = 'Python logging snippet' })
