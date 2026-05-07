@@ -1,8 +1,34 @@
 --
 -- Set leader keys at the VERY TOP - before any other config
--- Leader is <space>
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
+
+-- Function to update line number colors
+local function update_line_number_colors()
+    local current_win = vim.api.nvim_get_current_win()
+    local all_windows = vim.api.nvim_list_wins()
+
+    for _, win in ipairs(all_windows) do
+        local buf = vim.api.nvim_win_get_buf(win)
+        local is_current_win = (win == current_win)
+
+        if is_current_win then
+            -- Active window
+            vim.api.nvim_win_set_option(
+                win,
+                'winhighlight',
+                'LineNr:ActiveLineNr'
+            )
+        else
+            -- Inactive window
+            vim.api.nvim_win_set_option(
+                win,
+                'winhighlight',
+                'LineNr:InactiveLineNr'
+            )
+        end
+    end
+end
 
 -- Initialize on startup
 vim.defer_fn(function()
@@ -77,7 +103,9 @@ vim.keymap.set('n', ',C', ':set cc=79<CR>')
 
 -- Start lazy nvim 
 require("lazy").setup("plugins")
-require('vim._core.ui2').enable()
+-- require('vim._core.ui2').enable({ ext_cmdline = false, ext_menu = false })
+-- require('vim._core.ui2').enable({ ext_cmdline = false, ext_menu = false, ext_popupmenu = false })
+-- require('vim._core.ui2').enable()
 
 vim.keymap.set('i', 'clls', "console.log('')<ESC>F';a", { desc = 'JS console.log snippet' })
 vim.keymap.set('i', 'lgi',  "logging.info('')<ESC>F';a",  { desc = 'Python logging snippet' })
@@ -86,14 +114,12 @@ local augroup = vim.api.nvim_create_augroup   -- Create/get autocommand group
 local autocmd = vim.api.nvim_create_autocmd
 
 -- highlight yanked text for 200ms using the "Visual" highlight group
-vim.cmd[[
-            augroup highlight_yank
-            autocmd!
-            au TextYankPost * silent! lua vim.highlight.on_yank({
-                higroup="Visual", timeout=200
-            })
-            augroup END
-]]
+vim.cmd([[
+  augroup highlight_yank
+    autocmd!
+    au TextYankPost * silent! lua vim.highlight.on_yank({higroup="Visual", timeout=200})
+  augroup END
+]])
 
 -- fancy editing thing, rarely used by me
 -- vim.opt.virtualedit = "all"
@@ -119,32 +145,6 @@ vim.api.nvim_set_hl(0, "NormalFloat", {bg="#020202", fg="#aaaaaa"})
 vim.api.nvim_set_hl(0, 'ActiveLineNr', { fg = '#777777', bg = 'NONE' })
 vim.api.nvim_set_hl(0, 'InactiveLineNr', { fg = '#2a2a2a', bg = 'NONE' })
 
--- Function to update line number colors
-local function update_line_number_colors()
-    local current_win = vim.api.nvim_get_current_win()
-    local all_windows = vim.api.nvim_list_wins()
-
-    for _, win in ipairs(all_windows) do
-        local buf = vim.api.nvim_win_get_buf(win)
-        local is_current_win = (win == current_win)
-
-        if is_current_win then
-            -- Active window
-            vim.api.nvim_win_set_option(
-                win,
-                'winhighlight',
-                'LineNr:ActiveLineNr'
-            )
-        else
-            -- Inactive window
-            vim.api.nvim_win_set_option(
-                win,
-                'winhighlight',
-                'LineNr:InactiveLineNr'
-            )
-        end
-    end
-end
 
 -- Set up autocommands
 local group = vim.api.nvim_create_augroup('BufferLineNumbers', { clear = true })
