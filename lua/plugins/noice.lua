@@ -11,7 +11,6 @@ return {
     },
 
     config = function()
-        
         require("noice").setup({
             views = {
                 cmdline_popup = {
@@ -42,12 +41,12 @@ return {
                         col = "50%",
                     },
                     size = {
-                        width = 84,
+                        width = 82,
                         height = 10,
                     },
                     border = {
                         style = "none",
-                        padding = { 1, 2 },
+                        padding = { 1, 1 },
                     },
                     win_options = {
                         winhighlight = "NormalFloat:NoiceCmdlinePopup,FloatBorder:FloatBorder",
@@ -157,8 +156,9 @@ return {
 
          -- Override after Noice is loaded
         vim.defer_fn(function()
-            -- vim.api.nvim_set_hl(0, "NoiceCmdlinePopup", { bg = "#2a2a2a" })
-            vim.api.nvim_set_hl(0, "NoiceCmdlinePopup", { bg = "#0f0f0f" })
+            vim.api.nvim_set_hl(0, "NoiceCmdlinePopup", { bg = "#2a2a2a" })
+            -- vim.api.nvim_set_hl(0, "NoiceCmdlinePopup", { bg = "#0f0f0f" })
+            -- vim.api.nvim_set_hl(0, "NoiceCmdlinePopup", { bg = "#ffffff" })
             -- Force refresh all windows
             vim.cmd("redraw!")
         end, 500)
