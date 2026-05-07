@@ -15,7 +15,7 @@ return {
         indent = indent_config,
         input = { enabled = true },
         notifier = {
-            enabled = true,
+            enabled = false,
             timeout = 3000,
         },
         picker = {
@@ -23,7 +23,7 @@ return {
             layout = {
                 layout = {
                     box = "vertical",
-                    backdrop = true,
+                    -- backdrop = true,
                     row = -1,
                     width = 0,
                     height = 0.4,
@@ -59,21 +59,21 @@ return {
             pattern = "VeryLazy",
             callback = function()
                 -- Setup some globals for debugging (lazy-loaded)
-                _G.dd = function(...)
-                    Snacks.debug.inspect(...)
-                end
-                _G.bt = function()
-                    Snacks.debug.backtrace()
-                end
+                -- _G.dd = function(...)
+                --     Snacks.debug.inspect(...)
+                -- end
+                -- _G.bt = function()
+                --     Snacks.debug.backtrace()
+                -- end
 
                 -- Override print to use snacks for `:=` command
-                if vim.fn.has("nvim-0.11") == 1 then
-                    vim._print = function(_, ...)
-                        dd(...)
-                    end
-                else
-                    vim.print = _G.dd 
-                end
+                -- if vim.fn.has("nvim-0.11") == 1 then
+                --     vim._print = function(_, ...)
+                --         dd(...)
+                --     end
+                -- else
+                --     vim.print = _G.dd 
+                -- end
 
                 -- Create some toggle mappings
                 -- Snacks.toggle.option("spell", { name = "Spelling" }):map("<leader>us")
