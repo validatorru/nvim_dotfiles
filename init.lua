@@ -76,9 +76,9 @@ vim.o.signcolumn = 'yes'
 
 vim.o.termguicolors = true
 
-vim.api.nvim_set_hl(0, 'CursorLine', { bg = '#3c3836' })
-vim.api.nvim_set_hl(0, 'WinSeparator', { fg = '#000000' })
-vim.api.nvim_set_hl(0, 'PmenuSel', { fg = '#000000' })
+    vim.api.nvim_set_hl(0, 'CursorLine', { bg = '#3c3836' })
+    vim.api.nvim_set_hl(0, 'WinSeparator', { fg = '#000000' })
+    vim.api.nvim_set_hl(0, 'PmenuSel', { fg = '#000000' })
 
 vim.api.nvim_create_user_command('Q', 'q', {})
 
@@ -100,6 +100,7 @@ vim.keymap.set('n', '<space>l', ':tabp<CR>')
 vim.keymap.set('n', ',c', ':set cc=<CR>')
 -- show color colum (virtcolumn)
 vim.keymap.set('n', ',C', ':set cc=79<CR>')
+vim.g.virtcolumn_char = "∙"
 
 -- Start lazy nvim 
 require("lazy").setup("plugins")
@@ -193,8 +194,8 @@ vim.keymap.set('v', ' s', function()
     end
 
     -- Replace the selected text
-    vim.api.nvim_buf_set_text(0, 
-        start_pos[1]-1, start_pos[2], end_pos[1]-1, end_pos[2], 
+    vim.api.nvim_buf_set_text(0,
+        start_pos[1]-1, start_pos[2], end_pos[1]-1, end_pos[2],
         result_lines)
 end, { noremap = true, silent = true, desc = "Strip HTML tags (keep newlines)" })
 
